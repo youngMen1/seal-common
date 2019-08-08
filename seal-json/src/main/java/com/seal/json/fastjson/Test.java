@@ -57,7 +57,7 @@ public class Test {
 
     public static void json2Map() {
         // Map -> JSON
-        Map<String, Bar> map = new HashMap<String, Bar>();
+        Map<String, Bar> map = new HashMap<String, Bar>(16);
         map.put("a", new Bar());
         map.put("b", new Bar());
         map.put("c", new Bar());
