@@ -11,7 +11,7 @@ import java.util.*;
  * @description
  **/
 @Data
-public class Foo {
+public class FooDto {
 
     private String vString = "vStringhehhehe";
     private char vchar = 'x';
@@ -38,9 +38,9 @@ public class Foo {
     private List<String> listString = new ArrayList<String>();
     private Map<String, String> map = new HashMap<String, String>();
 
-    private Bar bar = new Bar();
-    private Bar[] avBar = {new Bar(), new Bar()};
-    private List<Bar> listBar = new ArrayList<Bar>();
+    private BarDto barDto = new BarDto();
+    private BarDto[] avBarDto = {new BarDto(), new BarDto()};
+    private List<BarDto> listBarDto = new ArrayList<BarDto>();
 
     {
         listString.add("listString1");
@@ -51,8 +51,8 @@ public class Foo {
         map.put("y", "s22222y");
         map.put("z", "s33333z");
 
-        listBar.add(new Bar());
-        listBar.add(new Bar());
-        listBar.add(new Bar());
+        listBarDto.add(new BarDto());
+        listBarDto.add(new BarDto());
+        listBarDto.add(new BarDto());
     }
 }

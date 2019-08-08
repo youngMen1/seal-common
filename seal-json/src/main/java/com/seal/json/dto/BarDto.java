@@ -15,7 +15,7 @@ import java.util.Random;
  * @description
  **/
 @Data
-public class Bar {
+public class BarDto {
     public static SerializeConfig mapping = new SerializeConfig();
     private String barName;
     private int barAge;
@@ -34,10 +34,10 @@ public class Bar {
 
 
     public static void main(String[] args) {
-        Object obj = JSON.toJSON(new Bar());
-        String x1 = JSON.toJSONString(new Bar(), true);
+        Object obj = JSON.toJSON(new BarDto());
+        String x1 = JSON.toJSONString(new BarDto(), true);
         System.out.println(x1);
-        String x2 = JSON.toJSONString(new Bar(), mapping);
+        String x2 = JSON.toJSONString(new BarDto(), mapping);
         System.out.println(x2);
     }
 

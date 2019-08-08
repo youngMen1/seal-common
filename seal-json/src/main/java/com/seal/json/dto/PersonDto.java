@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 // 全参的构造方法
 @AllArgsConstructor
-public class Person {
+public class PersonDto {
     private String id;
     private String name;
     private int age;

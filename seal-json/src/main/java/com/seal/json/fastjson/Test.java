@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
-import com.seal.json.dto.Bar;
-import com.seal.json.dto.Foo;
+import com.seal.json.dto.BarDto;
+import com.seal.json.dto.FooDto;
 
 import java.util.*;
 
@@ -25,12 +25,12 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        Foo foo = new Foo();
+        FooDto fooDto = new FooDto();
         Date date = new Date();
         String text = JSON.toJSONString(date, mapping);
         System.out.println(text);
-        System.out.println(JSON.toJSONString(foo, true));
-        String x2 = JSON.toJSONString(foo, mapping);
+        System.out.println(JSON.toJSONString(fooDto, true));
+        String x2 = JSON.toJSONString(fooDto, mapping);
         System.out.println(x2);
 
         json2List();
@@ -42,29 +42,29 @@ public class Test {
 
     public static void json2List() {
         // List -> JSON array
-        List<Bar> barList = new ArrayList<Bar>();
-        barList.add(new Bar());
-        barList.add(new Bar());
-        barList.add(new Bar());
-        String json = JSON.toJSONString(barList, true);
+        List<BarDto> barDtoList = new ArrayList<BarDto>();
+        barDtoList.add(new BarDto());
+        barDtoList.add(new BarDto());
+        barDtoList.add(new BarDto());
+        String json = JSON.toJSONString(barDtoList, true);
         System.out.println(json);
         // JSON array -> List
-        List<Bar> barList1 = JSON.parseArray(json, Bar.class);
-        for (Bar bar : barList1) {
-            System.out.println(bar.toString());
+        List<BarDto> barDtoList1 = JSON.parseArray(json, BarDto.class);
+        for (BarDto barDto : barDtoList1) {
+            System.out.println(barDto.toString());
         }
     }
 
     public static void json2Map() {
         // Map -> JSON
-        Map<String, Bar> map = new HashMap<String, Bar>(16);
-        map.put("a", new Bar());
-        map.put("b", new Bar());
-        map.put("c", new Bar());
+        Map<String, BarDto> map = new HashMap<String, BarDto>(16);
+        map.put("a", new BarDto());
+        map.put("b", new BarDto());
+        map.put("c", new BarDto());
         String json = JSON.toJSONString(map, true);
         System.out.println(json);
         // JSON -> Map
-        Map<String, Bar> map1 = (Map<String, Bar>) JSON.parse(json);
+        Map<String, BarDto> map1 = (Map<String, BarDto>) JSON.parse(json);
         for (String key : map1.keySet()) {
             System.out.println(key + ":" + map1.get(key));
         }
@@ -82,8 +82,8 @@ public class Test {
     }
 
     public static void array2JSON2() {
-        Bar[] arr_Bar = {new Bar(), new Bar(), new Bar()};
-        String json_arr_Bar = JSON.toJSONString(arr_Bar, true);
+        BarDto[] arr_BarDto = {new BarDto(), new BarDto(), new BarDto()};
+        String json_arr_Bar = JSON.toJSONString(arr_BarDto, true);
         System.out.println(json_arr_Bar);
         JSONArray jsonArray = JSON.parseArray(json_arr_Bar);
         for (Object o : jsonArray) {
