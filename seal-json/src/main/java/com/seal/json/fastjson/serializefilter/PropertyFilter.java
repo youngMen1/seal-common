@@ -1,5 +1,8 @@
 package com.seal.json.fastjson.serializefilter;
 
+
+import com.alibaba.fastjson.serializer.SerializeFilter;
+
 /**
  * @author zhiqiang.feng
  * @version 1.0
@@ -12,13 +15,8 @@ package com.seal.json.fastjson.serializefilter;
  * ValueFilter 修改Value
  * BeforeFilter 序列化时在最前添加内容
  * AfterFilter 序列化时在最后添加内容
- **/
-
-import com.alibaba.fastjson.serializer.SerializeFilter;
-
-/**
  * PropertyFilter 根据PropertyName和PropertyValue来判断是否序列化
- */
+ **/
 public interface PropertyFilter extends SerializeFilter {
     boolean apply(Object object, String propertyName, Object propertyValue);
 }
