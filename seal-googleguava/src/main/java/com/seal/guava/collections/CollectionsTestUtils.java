@@ -1,9 +1,6 @@
 package com.seal.guava.collections;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
 
 import java.util.*;
@@ -38,7 +35,7 @@ public class CollectionsTestUtils {
     }
 
     /**
-     *
+     * 不可变集合
      */
     private static void setList() {
         /*List<String> list = new ArrayList<String>();
