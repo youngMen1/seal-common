@@ -32,6 +32,12 @@ public class Test {
         System.out.println(JSON.toJSONString(foo, true));
         String x2 = JSON.toJSONString(foo, mapping);
         System.out.println(x2);
+
+        json2List();
+        json2Map();
+        array2JSON();
+        array2JSON2();
+
     }
 
     public static void json2List() {
