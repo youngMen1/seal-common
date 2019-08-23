@@ -30,7 +30,7 @@ public class BagTest {
         }
         // 5
         System.out.println("包中元素个数为：" + hashBag.size());
-        //下面两个特有的方法 使用起来较为方便 2
+        // 下面两个特有的方法 使用起来较为方便 2
         System.out.println("包中entity1个数为：" + hashBag.getCount(s1));
         // 2
         System.out.println("去重后个数为：" + hashBag.uniqueSet().size());
