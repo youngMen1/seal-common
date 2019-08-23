@@ -20,7 +20,7 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        test();
+        typeReferenceTest();
     }
 
     /**
@@ -28,7 +28,7 @@ public class Test {
      * 在需要的时候可以使用readTree方法直接读取JSON中的某个属性值。需要注意的是从JSON转换为Map对象的时候，
      * 由于Java的类型擦除，所以类型需要我们手动用new TypeReference<T>给出。
      */
-    private static void test() {
+    private static void typeReferenceTest() {
         try {
 
             Person person1 = new Person();

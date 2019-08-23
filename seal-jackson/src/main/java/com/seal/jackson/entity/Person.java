@@ -1,8 +1,11 @@
 package com.seal.jackson.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 /**
  * @author zhiqiang.feng
@@ -16,4 +19,6 @@ import lombok.NoArgsConstructor;
 public class Person {
     private String name;
     private String age;
+    @JsonFormat(pattern = "yyyy-MM-DD")
+    private LocalDate birthday;
 }
