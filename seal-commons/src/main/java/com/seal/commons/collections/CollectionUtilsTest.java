@@ -28,8 +28,17 @@ public class CollectionUtilsTest {
         collateTransformTest();
         // 使用filter()方法过滤列表
         filterTest();
+        // 检查子列表
+        isSubCollectionTest();
+        // 检查相交
+        intersectionTest();
+        // 求差集
+        subtractTest();
+        // 求联合集
+        unionTest();
 
     }
+
 
     /**
      * CollectionUtils的addIgnoreNull()方法可用于确保只有非空(null)值被添加到集合中
@@ -82,7 +91,6 @@ public class CollectionUtilsTest {
 
         System.out.println("Original List: " + integerList);
         CollectionUtils.filter(integerList, new Predicate<Integer>() {
-
             @Override
             public boolean evaluate(Integer input) {
                 if (input.intValue() % 2 == 0) {
@@ -92,6 +100,74 @@ public class CollectionUtilsTest {
             }
         });
         System.out.println("Filtered List (Even numbers): " + integerList);
+    }
+
+    /**
+     * 检查子列表
+     * CollectionUtils的isSubCollection()方法可用于检查集合是否包含给定集合。
+     */
+    public static void isSubCollectionTest() {
+        //checking inclusion
+        List<String> list1 = Arrays.asList("A", "A", "A", "C", "B", "B");
+        List<String> list2 = Arrays.asList("A", "A", "B", "B");
+
+        System.out.println("List 1: " + list1);
+        System.out.println("List 2: " + list2);
+        // true
+        System.out.println("Is List 2 contained in List 1: "
+                + CollectionUtils.isSubCollection(list2, list1));
+    }
+
+    /**
+     * 检查相交
+     * CollectionUtils的intersection()方法可用于获取两个集合(交集)之间的公共对象部分。
+     */
+    public static void intersectionTest(){
+
+        //checking inclusion
+        List<String> list1 = Arrays.asList("A","A","A","C","B","B");
+        List<String> list2 = Arrays.asList("A","A","B","B");
+
+        System.out.println("List 1: " + list1);
+        System.out.println("List 2: " + list2);
+        // [A, A, B, B]
+        System.out.println("Commons Objects of List 1 and List 2: "
+                + CollectionUtils.intersection(list1, list2));
+    }
+
+    /**
+     * 求差集CollectionUtils的subtract()方法可用于通过从其他集合中减去一个集合的对象来获取新集合。
+     * 参数
+     * a - 要从中减去的集合，不能为null。
+     * b - 要减去的集合，不能为null。
+     */
+    private static void subtractTest() {
+        //checking inclusion
+        List<String> list1 = Arrays.asList("A","A","A","C","B","B");
+        List<String> list2 = Arrays.asList("A","A","B","B");
+
+        System.out.println("List 1: " + list1);
+        System.out.println("List 2: " + list2);
+        // [A, C]
+        System.out.println("List 1 - List 2: "
+                + CollectionUtils.subtract(list1, list2));
+
+    }
+
+    /**
+     * CollectionUtils的union()方法可用于获取两个集合的联合。
+     */
+    private static void unionTest() {
+        //checking inclusion
+        List<String> list1 = Arrays.asList("A","A","A","C","B","B");
+        List<String> list2 = Arrays.asList("A","A","B","B");
+
+        System.out.println("List 1: " + list1);
+        System.out.println("List 2: " + list2);
+        // [A, A, A, B, B, C]
+        System.out.println("Union of List 1 and List 2: "
+                + CollectionUtils.union(list1, list2));
+
     }
 
 }
