@@ -1,6 +1,6 @@
 package com.seal.features.controller;
 
-import com.example.testproject.entity.Person;
+import com.seal.features.entity.Person;
 
 import java.util.Arrays;
 import java.util.List;
