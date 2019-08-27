@@ -1,7 +1,14 @@
 ## jdk8新特性学习
 
-## Google Guava学习
+
+## google-Guava
 http://ifeve.com/google-guava-using-and-avoiding-null/
+
+## jdk8
+
+## jackson
+
+## fastJson
 
 ## Hutool
 一个Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种Util工具类，同时提供以下组件：
@@ -23,3 +30,5 @@ System（JVM和系统信息等）
 WatchService的封装（文件变动监控）
 XXXUtil各种有用的工具类
 简介
+
+## 参考
