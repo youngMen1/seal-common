@@ -212,7 +212,6 @@ public class FastJsonUtils {
     }
 
 
-
     public static void main(String[] args) {
         String json = "[{\"name\":\"张三\",\"age\":\"李四\",\"birthday\":null},{\"name\":\"王五\",\"age\":\"刘四\",\"birthday\":null}]";
         // 集合类型，使用parseArray进行解析
