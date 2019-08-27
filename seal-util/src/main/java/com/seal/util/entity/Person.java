@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author zhiqiang.feng
@@ -20,5 +21,5 @@ public class Person {
     private String name;
     private String age;
     @JsonFormat(pattern = "yyyy-MM-DD")
-    private LocalDate birthday;
+    private Date birthday;
 }
