@@ -29,6 +29,8 @@
     <properties>
         <java.version>1.8</java.version>
         <hutool.version>4.1.4</hutool.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
