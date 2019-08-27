@@ -1,19 +1,18 @@
 package com.seal.jackson.util;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.seal.jackson.entity.Person;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhiqiang.feng
@@ -21,19 +20,18 @@ import java.util.List;
  * @date-time 2019/8/1 11:56
  * @description json 工具类
  **/
+@Slf4j
 public class JsonUtils {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @PostConstruct
     public void init() {
         // 转换为格式化的json
-        this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
 //        // 美化输出
-//        this.objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+//        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 //        // 允许序列化空的POJO类
 //        // （否则会抛出异常）
 //        this.objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
@@ -64,8 +62,8 @@ public class JsonUtils {
             // 对象转为字符串,Map转为字符串
             jsonContent = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            if (logger.isErrorEnabled()) {
-                logger.error(e.getMessage(), e);
+            if (log.isErrorEnabled()) {
+                log.error(e.getMessage(), e);
             }
         }
         return jsonContent;
@@ -77,8 +75,8 @@ public class JsonUtils {
             // 对象转为byte数组
             byteArr = objectMapper.writeValueAsBytes(object);
         } catch (JsonProcessingException e) {
-            if (logger.isErrorEnabled()) {
-                logger.error(e.getMessage(), e);
+            if (log.isErrorEnabled()) {
+                log.error(e.getMessage(), e);
             }
         }
         return byteArr;
@@ -90,8 +88,8 @@ public class JsonUtils {
             // json字符串转为对象
             Object = objectMapper.readValue(jsonStr, Object.class);
         } catch (IOException e) {
-            if (logger.isErrorEnabled()) {
-                logger.error(e.getMessage(), e);
+            if (log.isErrorEnabled()) {
+                log.error(e.getMessage(), e);
             }
         }
         return Object;
@@ -103,24 +101,44 @@ public class JsonUtils {
             // byte数组转为对象
             Object = objectMapper.readValue(byteArr, Object.class);
         } catch (IOException e) {
-            if (logger.isErrorEnabled()) {
-                logger.error(e.getMessage(), e);
+            if (log.isErrorEnabled()) {
+                log.error(e.getMessage(), e);
             }
         }
         return Object;
     }
 
-    public List<String> toList(String json) {
+    public static List<String> toList(String json) {
         List<String> list = Collections.emptyList();
         try {
             if (StringUtils.hasText(json)) {
                 list = objectMapper.readValue(json, List.class);
             }
         } catch (IOException e) {
-            if (logger.isErrorEnabled()) {
-                logger.error(e.getMessage(), e);
+            if (log.isErrorEnabled()) {
+                log.error(e.getMessage(), e);
             }
         }
         return list;
+    }
+
+    public static <T> T fromJson(String json, TypeReference<T> jsonTypeReference) {
+        try {
+            if (json == null) {
+                return null;
+            }
+            return objectMapper.readValue(json, jsonTypeReference);
+        } catch (Exception e) {
+            log.error("From json failure, json:{}", json);
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String json = "[{\"name\":\"张三\",\"age\":\"李四\",\"birthday\":null},{\"name\":\"王五\",\"age\":\"刘四\",\"birthday\":null}]";
+
+        System.out.println(toList(json));
+        System.out.println(fromJson(json, new TypeReference<List<Person>>(){}));
     }
 }

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.JSONLibDataFormatSerializer;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.seal.json.entity.Person;
 
 import java.util.List;
 import java.util.Map;
@@ -208,5 +209,15 @@ public class FastJsonUtils {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+
+    public static void main(String[] args) {
+        String json = "[{\"name\":\"张三\",\"age\":\"李四\",\"birthday\":null},{\"name\":\"王五\",\"age\":\"刘四\",\"birthday\":null}]";
+        // 集合类型，使用parseArray进行解析
+        List<Person> parseArray = JSON.parseArray(json, Person.class);
+        System.out.println(parseArray);
+
     }
 }

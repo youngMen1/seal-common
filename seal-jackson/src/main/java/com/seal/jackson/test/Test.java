@@ -43,6 +43,8 @@ public class Test {
             list.add(person1);
             list.add(person2);
 
+            System.out.println("list:"+list);
+
             ObjectMapper mapper = new ObjectMapper();
             Map<String, Object> map = new HashMap<>(16);
             map.put("name", "周于");
