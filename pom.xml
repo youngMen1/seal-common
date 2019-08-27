@@ -21,6 +21,7 @@
     <modules>
         <module>seal-features</module>
         <module>seal-googleguava</module>
+        <module>seal-hutool</module>
         <module>seal-json</module>
         <module>seal-util</module>
     </modules>
@@ -31,6 +32,7 @@
     </properties>
 
     <dependencies>
+
         <!--WEB-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
