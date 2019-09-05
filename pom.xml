@@ -23,6 +23,7 @@
         <module>seal-features</module>
         <module>seal-googleguava</module>
         <module>seal-hutool</module>
+        <module>seal-jackson</module>
         <module>seal-json</module>
         <module>seal-util</module>
     </modules>
