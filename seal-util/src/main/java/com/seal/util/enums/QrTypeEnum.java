@@ -1,4 +1,4 @@
-package com.seal.util.vo;
+package com.seal.util.enums;
 
 import lombok.Getter;
 

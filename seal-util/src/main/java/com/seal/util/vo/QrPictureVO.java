@@ -1,5 +1,6 @@
 package com.seal.util.vo;
 
+import com.seal.util.enums.QrTypeEnum;
 import lombok.Data;
 
 
