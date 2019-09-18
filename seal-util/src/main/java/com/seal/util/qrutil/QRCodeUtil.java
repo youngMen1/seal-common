@@ -21,7 +21,7 @@ import java.util.Random;
  * @author zhiqiang.feng
  * @version 1.0
  * @date-time 2019/9/12 18:15
- * @description 生成图片流
+ * @description 生成二维码图片流
  **/
 public class QRCodeUtil {
 
