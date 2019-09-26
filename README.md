@@ -48,7 +48,7 @@ FastJson中的注解@JSONField，一般作用在get/set方法上面，常用的�
 格式化数据【format】
 过滤掉不需要序列化的字段【serialize】
 *  一、修改字段映射使用方法：
-
+```
 　　private Integer aid;
 　　// 实体类序列化为json字符串的时候，此类的aid字段，序列化为json中的testid字段
 　　@JSONField(name="testid") 
@@ -61,14 +61,19 @@ FastJson中的注解@JSONField，一般作用在get/set方法上面，常用的�
 　　public void setAid(Integer aid) {
 　　    this.aid = aid;
 　　}
+```
 *  二、格式化使用方法
+```
 　　@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 　　public Date getDateCompleted(...)
+```
 *  三、过滤不需要序列化的字段
+```
 　　@JSONField(serialize = false)
 　　public Integer getProgress() {
     　　return progress;
 　　}
+```
 
 ## Hutool
 一个Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种Util工具类，同时提供以下组件：
