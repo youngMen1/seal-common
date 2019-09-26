@@ -13,11 +13,11 @@ import java.util.Date;
  * @author fengzhiqiang
  * @date 2018-04-21
  * @since 1.0
- *
- *DateTimeFormatter我们更多的是直接使用pattern来做转换，
+ * <p>
+ * DateTimeFormatter我们更多的是直接使用pattern来做转换，
  * 其实这个类本身已经提供了一些预定义好的实例供我们使用。
  * 下面把两者的具体释义和示例都贴出来供大家参考。
- *
+ * <p>
  * 预定义
  * Predefined Formatters                       Formatter Description                                               Example
  * ----------------------                      ----------------------                                              ------------
@@ -40,59 +40,58 @@ import java.util.Date;
  * ISO_WEEK_DATE                               Year and Week                                                       '2012-W48-6'
  * ISO_INSTANT                                 Date and Time of an Instant                                         '2011-12-03T10:15:30Z'
  * RFC_1123_DATE_TIME                          RFC 1123 / RFC 822
-
-Pattern
-All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The following pattern letters are defined:
-
-Symbol  Meaning                     Presentation      Examples
-------  -------                     ------------      -------
-G       era                         text              AD; Anno Domini; A
-u       year                        year              2004; 04
-y       year-of-era                 year              2004; 04
-D       day-of-year                 number            189
-M/L     month-of-year               number/text       7; 07; Jul; July; J
-d       day-of-month                number            10
-
-Q/q     quarter-of-year             number/text       3; 03; Q3; 3rd quarter
-Y       week-based-year             year              1996; 96
-w       week-of-week-based-year     number            27
-W       week-of-month               number            4
-E       day-of-week                 text              Tue; Tuesday; T
-e/c     localized day-of-week       number/text       2; 02; Tue; Tuesday; T
-F       week-of-month               number            3
-
-a       am-pm-of-day                text              PM
-h       clock-hour-of-am-pm (1-12)  number            12
-K       hour-of-am-pm (0-11)        number            0
-k       clock-hour-of-am-pm (1-24)  number            0
-
-H       hour-of-day (0-23)          number            0
-m       minute-of-hour              number            30
-s       second-of-minute            number            55
-S       fraction-of-second          fraction          978
-A       milli-of-day                number            1234
-n       nano-of-second              number            987654321
-N       nano-of-day                 number            1234000000
-
-V       time-zone ID                zone-id           America/Los_Angeles; Z; -08:30
-z       time-zone name              zone-name         Pacific Standard Time; PST
-O       localized zone-offset       offset-O          GMT+8; GMT+08:00; UTC-08:00;
-X       zone-offset 'Z' for zero    offset-X          Z; -08; -0830; -08:30; -083015; -08:30:15;
-x       zone-offset                 offset-x          +0000; -08; -0830; -08:30; -083015; -08:30:15;
-Z       zone-offset                 offset-Z          +0000; -0800; -08:00;
-
-p       pad next                    pad modifier      1
-
-'       escape for text             delimiter
-''      single quote                literal           '
-[       optional section start
-]       optional section end
-#       reserved for future use
-{       reserved for future use
-}       reserved for future use
-
+ * <p>
+ * Pattern
+ * All letters 'A' to 'Z' and 'a' to 'z' are reserved as pattern letters. The following pattern letters are defined:
+ * <p>
+ * Symbol  Meaning                     Presentation      Examples
+ * ------  -------                     ------------      -------
+ * G       era                         text              AD; Anno Domini; A
+ * u       year                        year              2004; 04
+ * y       year-of-era                 year              2004; 04
+ * D       day-of-year                 number            189
+ * M/L     month-of-year               number/text       7; 07; Jul; July; J
+ * d       day-of-month                number            10
+ * <p>
+ * Q/q     quarter-of-year             number/text       3; 03; Q3; 3rd quarter
+ * Y       week-based-year             year              1996; 96
+ * w       week-of-week-based-year     number            27
+ * W       week-of-month               number            4
+ * E       day-of-week                 text              Tue; Tuesday; T
+ * e/c     localized day-of-week       number/text       2; 02; Tue; Tuesday; T
+ * F       week-of-month               number            3
+ * <p>
+ * a       am-pm-of-day                text              PM
+ * h       clock-hour-of-am-pm (1-12)  number            12
+ * K       hour-of-am-pm (0-11)        number            0
+ * k       clock-hour-of-am-pm (1-24)  number            0
+ * <p>
+ * H       hour-of-day (0-23)          number            0
+ * m       minute-of-hour              number            30
+ * s       second-of-minute            number            55
+ * S       fraction-of-second          fraction          978
+ * A       milli-of-day                number            1234
+ * n       nano-of-second              number            987654321
+ * N       nano-of-day                 number            1234000000
+ * <p>
+ * V       time-zone ID                zone-id           America/Los_Angeles; Z; -08:30
+ * z       time-zone name              zone-name         Pacific Standard Time; PST
+ * O       localized zone-offset       offset-O          GMT+8; GMT+08:00; UTC-08:00;
+ * X       zone-offset 'Z' for zero    offset-X          Z; -08; -0830; -08:30; -083015; -08:30:15;
+ * x       zone-offset                 offset-x          +0000; -08; -0830; -08:30; -083015; -08:30:15;
+ * Z       zone-offset                 offset-Z          +0000; -0800; -08:00;
+ * <p>
+ * p       pad next                    pad modifier      1
+ * <p>
+ * '       escape for text             delimiter
+ * ''      single quote                literal           '
+ * [       optional section start
+ * ]       optional section end
+ * #       reserved for future use
+ * {       reserved for future use
+ * }       reserved for future use
  */
-public class  DateUtils {
+public class DateUtils {
     public static String F19 = "yyyy-MM-dd HH:mm:ss";
 
     public static String F14 = "yyyyMMddHHmmss";
@@ -105,19 +104,19 @@ public class  DateUtils {
 
 
     public void date() throws ParseException {
-        SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
-        Date date=sdf1.parse("yyyy-mm-dd");
-        SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String str=sdf2.format(date);
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf1.parse("yyyy-mm-dd");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String str = sdf2.format(date);
     }
 
     /**
      * LocalDate转String
+     *
      * @param date
      * @return
      */
     public String LocalDateString(LocalDate date) {
-        // LocalDate date = LocalDate.now();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dateStr = date.format(fmt);
         return dateStr;
@@ -132,37 +131,35 @@ public class  DateUtils {
         //使用预定义实例来转换
         DateTimeFormatter fmt = DateTimeFormatter.ISO_LOCAL_DATE;
         String dateStr = dateTime.format(fmt);
-        System.out.println("LocalDateTime转String[预定义]:"+dateStr);
+        System.out.println("LocalDateTime转String[预定义]:" + dateStr);
 
         //使用pattern来转换
         //12小时制与24小时制输出由hh的大小写决定
         DateTimeFormatter fmt12 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss:SSS");
         String dateStr12 = dateTime.format(fmt12);
-        System.out.println("LocalDateTime转String[pattern](12小时制):"+dateStr12);
+        System.out.println("LocalDateTime转String[pattern](12小时制):" + dateStr12);
 
         DateTimeFormatter fmt24 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS");
         String dateStr24 = dateTime.format(fmt24);
-        System.out.println("LocalDateTime转String[pattern](24小时制):"+dateStr24);
+        System.out.println("LocalDateTime转String[pattern](24小时制):" + dateStr24);
 
         //如果想要给12小时制时间加上am/pm,这样子做：
         fmt12 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss:SSS a");
         dateStr12 = dateTime.format(fmt12);
-        System.out.println("LocalDateTime转String[pattern](12小时制带am/pm):"+dateStr12);
+        System.out.println("LocalDateTime转String[pattern](12小时制带am/pm):" + dateStr12);
     }
 
     /**
      * String转LocalDate和LocalDateTime
      */
-    public void String转LocalDate和LocalDateTime(){
+    public void String转LocalDate和LocalDateTime() {
         String str = "2017-11-21 14:41:06:612";
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS");
         LocalDate date = LocalDate.parse(str, fmt);
         LocalDateTime time = LocalDateTime.parse(str, fmt);
-        System.out.println("date:"+date);
-        System.out.println("time:"+time);
+        System.out.println("date:" + date);
+        System.out.println("time:" + time);
     }
-
-
 
 
     /**
