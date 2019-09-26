@@ -42,12 +42,12 @@ Fastjson Obejct/Map/JSON/String 互转方法
 使用的时候要注意，如果你没用 maven 管你你的依赖，用起来会很痛苦，比如 json-lib、smart-json 等。
 下面我要推荐的是阿里巴巴工程师开源的一个 json 库：FastJSON，这个库在解析速度和易用性上来说都很不错。
 
-### @JSONField注解的使用
+## @JSONField注解的使用
 FastJson中的注解@JSONField，一般作用在get/set方法上面，常用的使用场景有下面三个：
 修改和json字符串的字段映射【name】
 格式化数据【format】
 过滤掉不需要序列化的字段【serialize】
-### 一、修改字段映射使用方法：
+*  一、修改字段映射使用方法：
 
 　　private Integer aid;
 　　// 实体类序列化为json字符串的时候，此类的aid字段，序列化为json中的testid字段
@@ -61,10 +61,10 @@ FastJson中的注解@JSONField，一般作用在get/set方法上面，常用的�
 　　public void setAid(Integer aid) {
 　　    this.aid = aid;
 　　}
-### 二、格式化使用方法
+*  二、格式化使用方法
 　　@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 　　public Date getDateCompleted(...)
-### 三、过滤不需要序列化的字段
+*  三、过滤不需要序列化的字段
 　　@JSONField(serialize = false)
 　　public Integer getProgress() {
     　　return progress;
