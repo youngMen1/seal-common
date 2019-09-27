@@ -1,0 +1,226 @@
+Streams
+------------------------------------------------------
+
+* SHOW: ExternalInternalTest:
+  - highlight the difference between internal and external iteration
+  - external iteration is explicitly serial
+  - libraries have more headroom optimizing with internal iteration
+  - sometimes even forEach is not enough: chaining the action within the serial again
+
+* Stream:
+ - explain why Stream is needed, why not Iterable
+ - able to chain/fuse multiple operations
+ - can change shape as we go
+ - many loops are expressed as source -> ops -> ... -> ops -> sink chain
+
+* SHOW: StreamAPI test:
+
+ - test1():
+    Arrays.asList() is actually List<String>
+    .stream() actually produces Stream<String>, but it's hidden
+    .findFirst() polls the first element from the stream
+    .get() gets the element
+
+    [DISCUSSION FOR OPTIONAL]
+
+ - test2():
+    .filter() accepts the elements matching the predicate
+    .into() dumps the result into the collection
+
+ - test3():
+    .map() generates Stream<R> from Stream<T>
+
+ - test4():
+    .reduce() is the alias for foldl.
+    Q: What this code is doing?
+
+ - test5():
+    .flatMap() produces multiple results for each element
+    breaks the string into the words
+
+ - (optional) test6():
+    .uniqueElements() filters out duplicates
+
+ - (optional) test7():
+    .sorted() sorts the elements in the stream [EAGER OPERATION]
+
+ - (optional) test8():
+    .cumulate() computes the prefix
+
+* Lazy vs. Eager semantics:
+  - once the call returns, the result is not ready yet for lazy op, and ready for eager op
+
+  SHOW: LazyEagerTest
+    - testLazy(): streams are naturally lazy, operated in "pull" fashion
+    - testShortCircuit(): laziness enables easy shortcircuiting with predictable state
+    - testEager(): if we know to terminate the pipeline with eager op, we can do "push"
+
+  "push" has awesome performance advantages, not requiring to handle the intermediate states in pipeline stages
+
+  SHOW: LazyEagerBench
+    (run with -Xmx4g -Xms4g, -r 3 -i 3 -f)
+    - each stage maintains the state, because every state can be potentially cut over (see PeekTest)
+    - forEach knows we are traversing the whole source at once, need not to keep the state
+
+* Sequential vs. Parallel
+  - internal iterations enables us to ask for parallelism
+
+  SHOW: SeqParTest
+    - the only the difference is asking parallel(), not stream()
+    - we explicitly ask use for enabling parallelism, because of the overheads
+
+  The backing generator is responsible for subdividing itself recursively; uses Fork/Join to compute in parallel.
+
+  SHOW: SeqParBench
+    (run with -Xmx4g -Xms4g, -r 3 -i 3 -f)
+
+
+流
+
+------------------------------------------------------
+
+
+
+*说明:ExternalInternalTest:
+
+-强调内部迭代和外部迭代的区别
+
+-外部迭代是显式串行的
+
+-库有更多的空间优化与内部迭代
+
+-有时甚至forEach是不够的:再次链接在序列中的动作
+
+
+
+*流:
+
+-解释为什么需要流，为什么不能迭代
+
+-能够连锁/融合多种操作
+
+-可以随时改变形状
+
+-许多循环表示为源->操作->…-> ops -> sink chain
+
+
+
+*显示:StreamAPI测试:
+
+
+
+——test1 ():
+
+aslist()实际上是List
+
+.stream()实际生成Stream，但它是隐藏的
+
+.findFirst()轮询流中的第一个元素
+
+.get()获取元素
+
+
+
+(讨论可选)
+
+
+
+——test2 ():
+
+filter()接受与谓词匹配的元素
+
+.into()将结果转储到集合中
+
+
+
+——test3 ():
+
+map()从流生成流
+
+
+
+——test4 ():
+
+.reduce()是foldl的别名。
+
+问:这段代码在做什么?
+
+
+
+——test5 ():
+
+.flatMap()为每个元素生成多个结果
+
+把字符串分成单词
+
+
+
+(可选)test6 ():
+
+.uniqueElements()过滤掉重复项
+
+
+
+(可选)test7 ():
+
+. ordered()对流中的元素进行排序[立即操作]
+
+
+
+(可选)test8 ():
+
+.cumulate()计算前缀
+
+
+
+*懒惰与渴望语义:
+
+-一旦调用返回，结果还没有为延迟op准备好，而为热切op准备好
+
+
+
+显示:LazyEagerTest
+
+- testLazy():流天生懒惰，以“pull”方式操作
+
+- testShortCircuit():惰性使得容易短路与可预测的状态
+
+- testEager():如果我们知道使用eager op终止管道，我们可以执行“push”
+
+
+
+“push”具有惊人的性能优势，不需要处理管道阶段的中间状态
+
+
+
+显示:LazyEagerBench
+
+(运行-Xmx4g -Xms4g， -r 3 -i 3 -f)
+
+-每个阶段维护状态，因为每个状态都可能被切换(参见PeekTest)
+
+- forEach知道我们正在遍历整个源代码，无需保存状态
+
+
+
+*顺序与并行
+
+-内部迭代使我们能够要求并行性
+
+
+
+显示:SeqParTest
+
+唯一的区别是询问parallel()，而不是stream()
+
+-我们明确要求使用支持并行，因为开销
+
+
+
+后台生成器负责递归细分自身;使用Fork/Join并行计算。
+
+
+
+显示:SeqParBench
+
+(运行-Xmx4g -Xms4g， -r 3 -i 3 -f)

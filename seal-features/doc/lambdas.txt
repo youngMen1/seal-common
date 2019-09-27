@@ -1,0 +1,204 @@
+* what is a lambda?
+    - is lambda closure?
+    - anonymous function
+
+* what is a type of lambda expression?
+    - need some function type
+    - MethodHandle?
+    - Declare "functional interface" - SAM - aka single-method interface.
+
+* Lambda expression is an instance of functional interface.
+
+  SHOW: LambdaTest, testCmpLegacy/testCmpLambda0
+
+* Lambda syntax
+  SHOW: LambdaTest
+    (int x)->     SHOW: LambdaTest::testCmpLambda1
+    ()->()        SHOW: LambdaTest::testNoArgs
+    (x)-> aka x->  SHOW: LambdaTest::testOneArg*
+    (x,y) -> <expr>
+    (x,y) -> { ....., return <expr>; }  SHOW: LambdaTest::testCmpLambda2 & 3
+    (x,y) -> { ....., ; }  aka void     SHOW: LambdaTest::testBlock*
+
+  SHOW: UroborosTest
+
+* A lambda/method reference can be used in the following contexts (Where can I use a lambda/method reference?):
+        assignment - i.e. FI f = ()-> 42;
+        return expression - i.e. return ()->42;
+        method/constructor argument - i.e. m(1, "", ()->42);
+        array initializer - i.e. FI[] o = { ()->41, ()->42 };
+        cast - i.e. (FI)()->42;
+        parenthesized expression occurring in any of the above contexts - i.e. FI f = (()-> 42);
+
+
+*   lambda       vs     anon/innerClass  (obsolete; do not tell here ?)
+ - linkage              - class loading
+ - capture              - creation (new)
+ - invocation           - invocation
+
+* capture
+  SHOW: CaptureTest
+    - effective final
+
+* recursive lambda aka capture itself
+  SHOW: FibonacciTest
+  - static - incorporated into lambda body
+  - instance - really we capture 'this'
+
+* Method Ref
+  - syntax A::b
+  - methodRef to static method    SHOW: MethodRefTest.testMethodRefStatic
+  - methodRef to instance method
+        - bound                   SHOW: MethodRefTest.testMethodRefInstance0/1/2
+        - unbound                 SHOW: MethodRefTest.testMethodRefInstanceUnbound
+  - MethodRef to Constructor
+        SHOW: parseInt/constructor/0/1
+
+* life became better (and fun)
+  SHOW: ThreadLocalTest
+  SHOW: NoiseSampleTest
+  SHOW: WeirdFunctionTest
+
+* implementation details.
+  - static inner
+  - dynamic inner
+  - dynamic methodHandleProxy
+
+* serialization?
+-------------------------------------------------------------------
+
+*是什么?
+
+-是闭包吗?
+
+——匿名函数
+
+
+
+* lambda表达式的类型是什么?
+
+-需要一些函数类型
+
+——MethodHandle ?
+
+-声明“功能接口”- SAM - aka单方法接口。
+
+
+
+* Lambda表达式是函数接口的一个实例。
+
+
+
+显示:LambdaTest testCmpLegacy / testCmpLambda0
+
+
+
+*λ语法
+
+显示:LambdaTest
+
+(int x)->显示:LambdaTest::testCmpLambda1
+
+()- >()显示:LambdaTest:: testNoArgs
+
+(x)->又名x->显示:LambdaTest::testOneArg*
+
+(x, y) - > < expr >
+
+(x,y) ->{…返回< expr >;}显示:LambdaTest::testCmpLambda2 & 3
+
+(x,y) ->{…,;} aka void SHOW: LambdaTest::testBlock*
+
+
+
+显示:UroborosTest
+
+
+
+* lambda/方法引用可以在以下上下文中使用(在哪里可以使用lambda/方法引用?)
+
+赋值-即FI f = ()-> 42;
+
+返回表达式-即return ()->42;
+
+方法/构造函数参数-即m(1， ""， ()->42);
+
+数组初始值设定项——即FI [] o ={() - > 41岁()- > 42};
+
+cast -即(FI)()->42;
+
+在上述任何一种上下文中出现的括号表达式，即FI f = (()-> 42);
+
+
+
+
+
+* lambda对anon/innerClass(过时;不要在这里说?)
+
+-链接-类加载
+
+-捕获-创建(新建)
+
+-调用-调用
+
+
+
+*捕获
+
+显示:CaptureTest
+
+——有效的最终
+
+
+
+*递归lambda又名捕获自身
+
+显示:FibonacciTest
+
+-静态-合并到lambda体中
+
+- instance -我们真的捕捉到了这个
+
+
+
+*方法参考
+
+——语法:b
+
+- methodRef to static方法显示
+
+- methodRef to instance方法
+
+-绑定显示:MethodRefTest.testMethodRefInstance0/1/2
+
+- unbound SHOW: method dreftest . testmethodrefinstanceunbound
+
+- method dref到构造函数
+
+表明:方法用于构造函数/ 0/1
+
+
+
+生活变得更好(更有趣)
+
+显示:ThreadLocalTest
+
+显示:NoiseSampleTest
+
+显示:WeirdFunctionTest
+
+
+
+*实现细节。
+
+——静态内部
+
+——动态内
+
+——动态methodHandleProxy
+
+
+
+*序列化?
+
+-------------------------------------------------------------------

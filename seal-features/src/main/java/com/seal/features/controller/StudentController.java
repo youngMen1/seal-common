@@ -143,9 +143,9 @@ public class StudentController {
             );
         /*
         java.lang.IllegalStateException: Duplicate key apple
-        at java.util.stream.Collectors.lambda$throwingMerger$0(Collectors.java:133)
+        at java.util.stream.Collectors.jdk8$throwingMerger$0(Collectors.java:133)
         at java.util.HashMap.merge(HashMap.java:1254)
-        at java.util.stream.Collectors.lambda$toMap$58(Collectors.java:1320)
+        at java.util.stream.Collectors.jdk8$toMap$58(Collectors.java:1320)
          */
 //        Map<Double,String> collect2 = students.stream().collect(Collectors.toMap(Student::getMoney, Student::getName));
 //        System.out.println(collect2);

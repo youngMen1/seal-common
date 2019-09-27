@@ -125,7 +125,7 @@ public class DateUtils {
     /**
      * LocalDateTime转String
      */
-    public void LocalDateTime转String() {
+    public void LocalDateTimeString() {
         LocalDateTime dateTime = LocalDateTime.now();
 
         //使用预定义实例来转换
@@ -152,7 +152,7 @@ public class DateUtils {
     /**
      * String转LocalDate和LocalDateTime
      */
-    public void String转LocalDate和LocalDateTime() {
+    public void StringLocalDateLocalDateTime() {
         String str = "2017-11-21 14:41:06:612";
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss:SSS");
         LocalDate date = LocalDate.parse(str, fmt);
