@@ -1,9 +1,12 @@
 package com.seal.util.encryptionutil;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Map;
 
 /**
  * @author zhiqiang.feng
@@ -61,6 +64,50 @@ public class HmacSha256 {
             log.info("Error HmacSHA256 ===========" + e.getMessage());
         }
         return hash;
+    }
+
+    /**
+     * 生成sign HMAC-SHA256 或 MD5 签名
+     *
+     * @param map         map
+     * @param paternerKey paternerKey
+     * @return sign
+     */
+    public static String generateSign(Map<String, String> map, String paternerKey) {
+        return generateSign(map, null, paternerKey);
+    }
+
+    /**
+     * 生成sign HMAC-SHA256 或 MD5 签名
+     *
+     * @param map         map
+     * @param sign_type   HMAC-SHA256 或 MD5
+     * @param paternerKey paternerKey
+     * @return sign
+     */
+    public static String generateSign(Map<String, String> map, String sign_type, String paternerKey) {
+        Map<String, String> tmap = MapUtil.order(map);
+        if (tmap.containsKey("sign")) {
+            tmap.remove("sign");
+        }
+        String str = MapUtil.mapJoin(tmap, false, false);
+        if (sign_type == null) {
+            sign_type = tmap.get("sign_type");
+        }
+        if ("HMAC-SHA256".equalsIgnoreCase(sign_type)) {
+            try {
+                Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+                SecretKeySpec secret_key = new SecretKeySpec(paternerKey.getBytes("UTF-8"), "HmacSHA256");
+                sha256_HMAC.init(secret_key);
+                return Hex.encodeHexString(sha256_HMAC.doFinal((str + "&key=" + paternerKey).getBytes("UTF-8"))).toUpperCase();
+            } catch (Exception e) {
+                log.error("", e);
+            }
+            return null;
+        } else {
+            // default MD5
+            return DigestUtils.md5Hex(str + "&key=" + paternerKey).toUpperCase();
+        }
     }
 
     /**
