@@ -78,8 +78,16 @@ public abstract class EmojiUtil {
 	
 	/**
 	 * 解析emoji
-	 * @param emoji_str emoji_str
-	 * @param type 0,1,2,3,4,5
+	 * @param emoji_str emoji_str nickName
+	 *
+	 * @param type emoji 表情解析方式<br>
+	 * 	 * 0 		  不设置 <br>
+	 * 	 * 1 HtmlHex 格式<br>
+	 * 	 * 2 HtmlTag 格式<br>
+	 * 	 * 3 Alias  格式<br>
+	 * 	 * 4 HtmlDec 格式<br>
+	 * 	 * 5 PureText 纯文本<br>
+	 *
 	 * @return emoji_result
 	 */
 	public static String parse(String emoji_str,int type){
