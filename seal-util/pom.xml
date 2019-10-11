@@ -23,6 +23,8 @@
         <fastjson-version>1.2.49</fastjson-version>
         <!--二维码-->
         <zxing.core.version>3.3.0</zxing.core.version>
+        <!--微信表情-->
+        <emoji-java.version>4.0.0</emoji-java.version>
     </properties>
 
     <dependencies>
@@ -86,6 +88,12 @@
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.56</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji-java.version}</version>
         </dependency>
     </dependencies>
 
