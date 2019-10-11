@@ -56,11 +56,9 @@ public class Sha256Security {
             } else {
                 a = b;
             }
-
             buf[index++] = HEX_CHAR[a / 16];
             buf[index++] = HEX_CHAR[a % 16];
         }
-
         return new String(buf);
     }
 
@@ -117,7 +115,6 @@ public class Sha256Security {
             String subStr = str.substring(i * 2, i * 2 + 2);
             bytes[i] = (byte) Integer.parseInt(subStr, 16);
         }
-
         return bytes;
     }
 

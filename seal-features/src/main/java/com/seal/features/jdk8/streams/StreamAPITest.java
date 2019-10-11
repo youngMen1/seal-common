@@ -84,6 +84,10 @@ public class StreamAPITest {
 
     @Test
     public void test7() {
+        System.out.println(Arrays.asList("3", "3", "2")
+                .stream()
+                .sorted(String::compareTo)
+                .collect(Collectors.toList()));
         Assert.assertEquals(
                 Arrays.asList("Bar", "Baz", "Foo"),
                 Arrays.asList("Foo", "Bar", "Baz")
