@@ -87,7 +87,8 @@ public class POIUtil {
         }
         //判断数据的类型
         switch (cell.getCellType()) {
-            case Cell.CELL_TYPE_NUMERIC: //数字
+            // 数字
+            case Cell.CELL_TYPE_NUMERIC:
                 if (HSSFDateUtil.isCellDateFormatted(cell)) {
                     cellValue = DateTimeUtils.formatDateLine(cell.getDateCellValue());
                 } else {
@@ -98,17 +99,20 @@ public class POIUtil {
                     cellValue = String.valueOf(str);
                 }
                 break;
-            case Cell.CELL_TYPE_STRING: //字符串
+            // 字符串
+            case Cell.CELL_TYPE_STRING:
                 String str = cell.getStringCellValue();
                 if (StringUtils.isNotEmpty(str) && StringUtils.isNotBlank(str) && str.contains(",")) {
                     str = str.replaceAll(",", "");
                 }
                 cellValue = String.valueOf(str);
                 break;
-            case Cell.CELL_TYPE_BOOLEAN: //Boolean
+            // Boolean
+            case Cell.CELL_TYPE_BOOLEAN:
                 cellValue = String.valueOf(cell.getBooleanCellValue());
                 break;
-            case Cell.CELL_TYPE_FORMULA: //公式
+            // 公式
+            case Cell.CELL_TYPE_FORMULA:
 
          /*       try {
                     cellValue = String.valueOf(cell.getStringCellValue());
@@ -119,10 +123,12 @@ public class POIUtil {
                 cellValue = String.valueOf(cell.getCellFormula());//获取公式
                 //cellValue = String.valueOf(cell.getNumericCellValue());获取值
                 break;
-            case Cell.CELL_TYPE_BLANK: //空值
+            // 空值
+            case Cell.CELL_TYPE_BLANK:
                 cellValue = "";
                 break;
-            case Cell.CELL_TYPE_ERROR: //故障
+            // 故障
+            case Cell.CELL_TYPE_ERROR:
                 cellValue = "非法字符";
                 break;
 
