@@ -10,6 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @version 1.0
  * @date-time 2019/10/11 11:25
  * @description HMACSHA256加密
+ * 散列算法
  **/
 @Slf4j
 public class HmacSha256 {
