@@ -4,8 +4,8 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
 import java.beans.PropertyDescriptor;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author zhiqiang.feng
@@ -17,6 +17,7 @@ public class ObjectConvertFilterUtil {
 
     /**
      * 获取为空属性
+     *
      * @param source
      * @return
      */
@@ -27,7 +28,7 @@ public class ObjectConvertFilterUtil {
         Set<String> emptyNames = new HashSet<>();
         for (PropertyDescriptor pd : pds) {
             Object srcValue = src.getPropertyValue(pd.getName());
-            if (srcValue == null){
+            if (srcValue == null) {
                 emptyNames.add(pd.getName());
             }
 
