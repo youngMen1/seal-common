@@ -25,9 +25,16 @@
         <zxing.core.version>3.3.0</zxing.core.version>
         <!--微信表情-->
         <emoji-java.version>4.0.0</emoji-java.version>
+        <okhttp.version>3.8.1</okhttp.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
 
         <!--redis-->
         <dependency>

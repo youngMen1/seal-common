@@ -57,7 +57,7 @@ public class AesCBCUtils {
      * @param encryptStr 需要加密的字符串
      * @return 加密后的十六进制字符串(hex)
      */
-    public static String encrypt(String encryptStr) {
+    public static String encrypt(String encryptStr,String aesKey) {
         try {
             IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes(DEFAULT_CHARSET));
             SecretKeySpec skeySpec = new SecretKeySpec(aesKey.getBytes(DEFAULT_CHARSET), KEY_ALGORITHM);
@@ -71,7 +71,6 @@ public class AesCBCUtils {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return null;
     }
 

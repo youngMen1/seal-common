@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
 /**
  * @author zhiqiang.feng
  * @version 1.0
@@ -13,6 +14,10 @@ import javax.crypto.spec.SecretKeySpec;
  **/
 @Slf4j
 public class Sha256Security {
+    /**
+     * 算法
+     */
+    private static final String KEY_ALGORITHM = "HmacSHA256";
 
     private static final char[] HEX_CHAR = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
@@ -35,6 +40,27 @@ public class Sha256Security {
         } catch (Exception e) {
             System.out.println("Error");
         }
+    }
+
+    /**
+     * sha256_HMAC加密
+     *
+     * @param message 消息
+     * @param secret  秘钥
+     * @return 加密后字符串
+     */
+    public static String hmacSha256(String message, String secret) {
+        String hash = "";
+        try {
+            Mac sha256_HMAC = Mac.getInstance(KEY_ALGORITHM);
+            SecretKeySpec secret_key = new SecretKeySpec(secret.getBytes(), KEY_ALGORITHM);
+            sha256_HMAC.init(secret_key);
+            byte[] bytes = sha256_HMAC.doFinal(message.getBytes());
+            hash = bytesToHexFun1(bytes);
+        } catch (Exception e) {
+            log.info("Error HmacSHA256 ===========" + e.getMessage());
+        }
+        return hash;
     }
 
     /**

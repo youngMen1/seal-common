@@ -86,11 +86,11 @@ public class HmacSha256 {
      * @return sign
      */
     public static String generateSign(Map<String, String> map, String sign_type, String paternerKey) {
-        Map<String, String> tmap = MapUtil.order(map);
+        Map<String, String> tmap = AbstractMapUtil.order(map);
         if (tmap.containsKey("sign")) {
             tmap.remove("sign");
         }
-        String str = MapUtil.mapJoin(tmap, false, false);
+        String str = AbstractMapUtil.mapJoin(tmap, false, false);
         if (sign_type == null) {
             sign_type = tmap.get("sign_type");
         }

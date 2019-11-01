@@ -8,9 +8,9 @@ import java.lang.reflect.Field;
 import java.net.URLEncoder;
 import java.util.*;
 
-public abstract class MapUtil {
+public abstract class AbstractMapUtil {
 	
-	private static Logger logger = LoggerFactory.getLogger(MapUtil.class);
+	private static Logger logger = LoggerFactory.getLogger(AbstractMapUtil.class);
 
 	/**
 	 * Map key 排序
@@ -22,6 +22,7 @@ public abstract class MapUtil {
 		List<Map.Entry<String, String>> infoIds = new ArrayList<Map.Entry<String, String>>(	map.entrySet());
 
 		Collections.sort(infoIds, new Comparator<Map.Entry<String, String>>() {
+			@Override
 			public int compare(Map.Entry<String, String> o1,Map.Entry<String, String> o2) {
 				return (o1.getKey()).toString().compareTo(o2.getKey());
 			}
