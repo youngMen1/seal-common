@@ -15,7 +15,8 @@ import java.net.URLDecoder;
  * @author zhiqiang.feng
  * @version 1.0
  * @date-time 2019/11/1 20:44
- * @description URL:https://xxx.xxx.xxx/xxx/xxx.svc/zzxz
+ * @description 数据签名和加密
+ * URL:https://xxx.xxx.xxx/xxx/xxx.svc/zzxz
  * EnterpriseCode:GuDeFeiLi2
  * EnterpriseSecretKey:48763039841970429690
  * UserNo:55540507472214906710
