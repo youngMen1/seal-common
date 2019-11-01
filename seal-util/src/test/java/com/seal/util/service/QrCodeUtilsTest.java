@@ -44,10 +44,12 @@ public class QrCodeUtilsTest {
      */
     @Test
     public void testWriteQRImg() {
-        String text = "http://blog.healerjean.top";
+        String text = "https://www.baidu.com/?tn=44004473_2_oem_dg";
         BufferedImage noLogoImage = QrCodeUtils.writeQRImg(text, 200, 200, 4);
         // 存储到本地
-        String saveFilePath = "/Users/healerjean/Desktop/new.png";
+        // String saveFilePath = "/Users/healerjean/Desktop/new.png";
+
+        String saveFilePath = "D:\\new.png";
         QrCodeUtils.saveImageToLocalDir(noLogoImage, saveFilePath);
     }
 
