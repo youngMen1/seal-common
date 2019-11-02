@@ -4,8 +4,10 @@ import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.seal.util.httputil.OkHttpUtil;
+import com.seal.util.strutil.StringUtil;
 import com.seal.util.vo.BasePostParam;
 import com.seal.util.vo.UserOrderOperationVO;
+import org.apache.commons.lang3.StringUtils;
 import org.bouncycastle.util.encoders.Base64;
 
 import java.io.UnsupportedEncodingException;
@@ -66,7 +68,7 @@ public class Test {
         // 添加完签名后再加密
         String encryptBasePostParamJsonJson = AesCBCUtils.encrypt(basePostParamJson, "94af7e8db0e0cd1a");
 
-        String json = RandomUtil.getRandom() + encryptBasePostParamJsonJson + "1234567890123456";
+        String json = StringUtil.createRandom() + encryptBasePostParamJsonJson + "1234567890123456";
 
         System.out.println("添加完签名后再加密的数据:{}" + json);
 
@@ -75,22 +77,22 @@ public class Test {
          */
         decryptData(json);
 
-        String result = OkHttpUtil.postJsonParams("https://xxx.xxx.xxx/xxx/xxx.svc/zzxz", json);
-
-        String deResult = null;
-        try {
-            // 先url解码
-            String urlDeResult = URLDecoder.decode(result, "UTF-8");
-            // 再Base64解码
-            deResult = new String(Base64.decode(urlDeResult), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        JSONObject jsonObject = JSON.parseObject(deResult);
-        Boolean booleanResult = jsonObject.getBoolean("Result");
-        if (!booleanResult) {
-            System.out.println(jsonObject.getString("ReturnParam"));
-        }
+//        String result = OkHttpUtil.postJsonParams("https://xxx.xxx.xxx/xxx/xxx.svc/zzxz", json);
+//
+//        String deResult = null;
+//        try {
+//            // 先url解码
+//            String urlDeResult = URLDecoder.decode(result, "UTF-8");
+//            // 再Base64解码
+//            deResult = new String(Base64.decode(urlDeResult), "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+//        JSONObject jsonObject = JSON.parseObject(deResult);
+//        Boolean booleanResult = jsonObject.getBoolean("Result");
+//        if (!booleanResult) {
+//            System.out.println(jsonObject.getString("ReturnParam"));
+//        }
     }
 
     /**
@@ -99,5 +101,24 @@ public class Test {
      * @param json
      */
     private static void decryptData(String json) {
+        System.out.println(json);
+        String random = json.substring(0, 6);
+        System.out.println("random:{}" + random);
+        String iv = StringUtil.subStr(json, -16);
+        System.out.println("iv:{}" + iv);
+        String decryptJson = StringUtil.subStr(json, 6, -16);
+        System.out.println("decryptJson:{}" + decryptJson);
+
+        // 解密数据
+        String jsonResult = AesCBCUtils.decrypt(decryptJson);
+        System.out.println("jsonResult:{}" + jsonResult);
+
+        BasePostParam basePostParam = JSON.parseObject(jsonResult, BasePostParam.class);
+        System.out.println("basePostParam:{}" + basePostParam);
+
+        UserOrderOperationVO userOrderOperationVO = JSON.parseObject(basePostParam.getParam(), UserOrderOperationVO.class);
+        System.out.println("userOrderOperationVO:{}" + userOrderOperationVO);
+
+
     }
 }
