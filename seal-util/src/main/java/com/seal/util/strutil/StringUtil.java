@@ -1,5 +1,7 @@
 package com.seal.util.strutil;
 
+import java.text.SimpleDateFormat;
+
 import static java.lang.Math.random;
 
 /**
@@ -107,6 +109,8 @@ public class StringUtil {
 
         return str.substring(s, e);
     }
+
+
 
     public static void main(String[] args) {
         String str = "12345abcde";
