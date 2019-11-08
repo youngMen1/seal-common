@@ -20,7 +20,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <hutool.version>4.1.9</hutool.version>
+        <hutool.version>4.1.12</hutool.version>
         <junit.version>4.12</junit.version>
         <poi.version>3.17</poi.version>
         <poi.ooxml.version>3.16</poi.ooxml.version>
