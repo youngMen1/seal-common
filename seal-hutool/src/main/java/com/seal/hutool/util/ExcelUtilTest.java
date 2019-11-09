@@ -53,22 +53,7 @@ public class ExcelUtilTest {
             }
         }
 
-//
-//        List<String> list1 = new ArrayList();
-//        ExcelReader reader3 = ExcelUtil.getReader("G:\\已发短信的电话号码.xlsx");
-//        // 行索引  2行开始
-//        List<List<Object>> read3 = reader3.read(1);
-//        for (List<Object> objects3 : read3) {
-//            list1.add(objects3.get(0) + "");
-//        }
         stringList.removeAll(list);
-
-
-//        ExcelWriter writer = ExcelUtil.getWriter("toXls.xls");
-//        //设置sheet名
-//        writer.renameSheet("短信触达的购买用户");
-//        writer.write(list);
-//        writer.close();
 
         try {
             writeFileContext(stringList, "新的短信触发的用户.txt");
