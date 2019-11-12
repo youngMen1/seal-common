@@ -1,5 +1,15 @@
 package com.seal.util.strutil;
 
+import org.apache.commons.lang3.StringUtils;
+import sun.misc.BASE64Encoder;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 
 import static java.lang.Math.random;
@@ -113,18 +123,22 @@ public class StringUtil {
 
 
     public static void main(String[] args) {
-        String str = "12345abcde";
-        System.out.println("--------------------------------");
-        System.out.println("正向截取长度为4，结果：\n" + subStr(str, 4));
-        System.out.println("反向截取长度为4，结果：\n" + subStr(str, -4));
-        System.out.println("--------------------------------");
-        System.out.println("正向截取到第4个字符的位置，结果：\n" + subStrStart(str, 4));
-        System.out.println("反向截取到第4个字符的位置，结果：\n" + subStrEnd(str, 4));
-        System.out.println("--------------------------------");
-        System.out.println("从第2个截取到第9个，结果：\n" + subStr(str, 1, 9));
-        System.out.println("从第2个截取到倒数第1个，结果：\n" + subStr(str, 1, -1));
-        System.out.println("从倒数第4个开始截取，结果：\n" + subStr(str, -4, 0));
-        System.out.println("从倒数第4个开始截取，结果：\n" + subStr(str, -4, 10));
+//        String str = "12345abcde";
+//        System.out.println("--------------------------------");
+//        System.out.println("正向截取长度为4，结果：\n" + subStr(str, 4));
+//        System.out.println("反向截取长度为4，结果：\n" + subStr(str, -4));
+//        System.out.println("--------------------------------");
+//        System.out.println("正向截取到第4个字符的位置，结果：\n" + subStrStart(str, 4));
+//        System.out.println("反向截取到第4个字符的位置，结果：\n" + subStrEnd(str, 4));
+//        System.out.println("--------------------------------");
+//        System.out.println("从第2个截取到第9个，结果：\n" + subStr(str, 1, 9));
+//        System.out.println("从第2个截取到倒数第1个，结果：\n" + subStr(str, 1, -1));
+//        System.out.println("从倒数第4个开始截取，结果：\n" + subStr(str, -4, 0));
+//        System.out.println("从倒数第4个开始截取，结果：\n" + subStr(str, -4, 10));
+
+       // System.out.println(ImageToBase64ByLocal("D:\\seal.jpg"));
+
+
     }
 
 }

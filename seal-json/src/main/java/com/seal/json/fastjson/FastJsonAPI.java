@@ -5,8 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.seal.json.dto.SnowDto;
 import lombok.var;
+
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhiqiang.feng
@@ -29,6 +32,8 @@ public class FastJsonAPI {
         parsePOJOGeneric();
         // convert POJO to json bytes
         jsonBytes();
+        // map转java实体
+        mapToEntity();
     }
 
     /**
@@ -46,8 +51,6 @@ public class FastJsonAPI {
         // 将JSON字符串反序列化为JavaBean
         JSONObject jsonObj = JSON.parseObject(jsonStr);
         System.out.println("json:" + jsonObj);
-
-
         return jsonObj;
     }
 
@@ -104,6 +107,20 @@ public class FastJsonAPI {
         // JSON.writeJSONString(writer, snowDto);
 
         return jsonBytes;
+    }
+
+
+    private static void mapToEntity() {
+        Map hash = new HashMap(16);
+        hash.put("name", "张三");
+        hash.put("age", "23");
+        hash.put("sex", "男");
+
+        String jsonString = JSON.toJSONString(hash);
+
+        // SnowDto student = (SnowDto)JSONObject.toJavaObject((JSON)JSONObject.toJSON(map), SnowDto.class);
+        SnowDto snowDto = JSON.parseObject(jsonString, SnowDto.class);
+        System.out.println(snowDto);
     }
 
 

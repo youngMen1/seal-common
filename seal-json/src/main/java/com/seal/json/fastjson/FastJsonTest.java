@@ -44,5 +44,6 @@ public class FastJsonTest {
         // JSON串转用户对象列表
         List<SnowDto> users2 = JSON.parseArray(jsonString2, SnowDto.class);
         System.out.println("users2:" + users2);
+
     }
 }
