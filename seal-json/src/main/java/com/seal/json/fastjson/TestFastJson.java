@@ -2,9 +2,12 @@ package com.seal.json.fastjson;
 
 import com.alibaba.fastjson.JSON;
 import com.seal.json.dto.PersonDto;
+import com.seal.json.entity.Person;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zhiqiang.feng
@@ -17,7 +20,27 @@ public class TestFastJson {
     public static void main(String[] args) {
         method1();
         method2();
+        method3();
     }
+
+
+    static void method3() {
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person("詹三", "1"));
+        personList.add(new Person("詹2", "1"));
+        personList.add(new Person("詹三", "2"));
+        personList.add(new Person("詹4", "18"));
+        personList.add(new Person("", ""));
+
+        List<String> list = personList.stream().
+                collect(Collectors.groupingBy(dog -> dog.getName() + dog.getAge(), Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
+        System.out.println(list.toString());
+    }
+
 
     static void method1() {
 

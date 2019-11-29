@@ -19,6 +19,6 @@ import java.time.LocalDate;
 public class Person {
     private String name;
     private String age;
-    @JsonFormat(pattern = "yyyy-MM-DD")
-    private LocalDate birthday;
+    // @JsonFormat(pattern = "yyyy-MM-DD")
+   // private LocalDate birthday;
 }
