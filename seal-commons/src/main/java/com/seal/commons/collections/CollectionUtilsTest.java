@@ -1,6 +1,5 @@
 package com.seal.commons.collections;
 
-import com.sun.corba.se.impl.orb.ParserTable;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.collections4.Transformer;
