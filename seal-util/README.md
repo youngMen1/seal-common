@@ -1,3 +1,4 @@
+## BeanUtils提供对Java反射和自省API的包装
 【开宗明义】
 1.无论是org.springframework.beans或者org.apache.commons.beanutils，与get/set方式相比，都存在性能问题。
 2.效率由高到底：get/set 》PropertyUtils 》BeanUtils。
