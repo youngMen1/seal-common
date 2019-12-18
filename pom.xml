@@ -31,11 +31,35 @@
     <properties>
         <java.version>1.8</java.version>
         <hutool.version>4.1.4</hutool.version>
+        <commons-version>3.8</commons-version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <guava-version>23.0</guava-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava-version}</version>
+        </dependency>
+
+        <!--commons-lang3是Apache Commons 团队发布的工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <!--Commons Collections增强了Java集合框架-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons-collections.version}</version>
+        </dependency>
 
         <!--WEB-->
         <dependency>

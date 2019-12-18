@@ -1,18 +1,15 @@
 package com.seal.util.beanutil;
 
-import java.util.Date;
-
+import com.google.common.collect.Lists;
 import com.seal.util.entity.Person;
 import com.seal.util.entity.PersonDto;
-import lombok.var;
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author zhiqiang.feng
@@ -23,19 +20,19 @@ import java.util.Map;
 @Slf4j
 public class BeanUtil {
 
+
     /**
-     * 集合复制
-     * 字段要一样
+     * List集合之间的对象属性赋值
      *
-     * @param clazz
-     * @param list
+     * @param clazz 输出集合类型
+     * @param input 输入集合
      * @param <T>
      * @param <S>
      * @return
      */
-    public static <T, S> List<T> mapping(Class<T> clazz, List<S> list) {
+    public static <T, S> List<T> mapping(List<S> input, Class<T> clazz) {
         List<T> resultList = new ArrayList<>();
-        for (S s : list) {
+        for (S s : input) {
             try {
                 T t = clazz.newInstance();
                 BeanUtils.copyProperties(s, t);
@@ -48,24 +45,60 @@ public class BeanUtil {
         return resultList;
     }
 
+    /**
+     * List集合之间的对象属性赋值
+     *
+     * @param input 输入集合
+     * @param clazz 输出集合类型
+     * @param <E>   输入集合类型
+     * @param <T>   输出集合类型
+     * @return 返回集合
+     */
+    public static <E, T> List<T> convertList(List<E> input, Class<T> clazz) {
+        List<T> output = Lists.newArrayList();
+        if (CollectionUtils.isNotEmpty(input)) {
+            for (E source : input) {
+                T target = BeanUtils.instantiateClass(clazz);
+                BeanUtils.copyProperties(source, target);
+                output.add(target);
+            }
+        }
+        return output;
+    }
+
 
     /**
      * 复制，并创建对象
      * 字段要一样
      *
-     * @param o
+     * @param source 源对象
      * @param cla
      * @param <T>
      * @return
      */
-    public static <T> T copyObject(Object o, Class<T> cla) {
+    public static <T> T copyObject(Object source, Class<T> cla) {
         try {
             T t = cla.newInstance();
-            BeanUtils.copyProperties(o, t);
+            BeanUtils.copyProperties(source, t);
             return t;
         } catch (Exception e) {
             log.error("To json copyObject, data:{}");
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 对象属性拷贝 <br>
+     * 将源对象的属性拷贝到目标对象
+     *
+     * @param source 源对象
+     * @param target 目标对象
+     */
+    public static void copyProperties(Object source, Object target) {
+        try {
+            BeanUtils.copyProperties(source, target);
+        } catch (Exception e) {
+            log.error("BeanUtil property copy failed:Exception", e);
         }
     }
 
@@ -118,7 +151,7 @@ public class BeanUtil {
         /**
          * 集合复制
          */
-        var mapping = mapping(PersonDto.class, list);
+        var mapping = mapping(list, PersonDto.class);
         System.out.println("mapping:{}" + mapping);
 
         /**
