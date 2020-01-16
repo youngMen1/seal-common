@@ -1,3 +1,11 @@
+## 模块说明
+seal-commons:Apache Commons 工具包
+seal-features:jdk8新特性
+seal-googleguava:Google Guava
+seal-hutool:hutool工具包
+seal-jackson:jackson
+seal-json:json工具包
+seal-util:util工具类总结,BeanUtils提供对Java反射和自省API的包装
 ## jdk8新特性学习
 
 ## google-Guava
