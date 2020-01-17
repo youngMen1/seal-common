@@ -1,5 +1,7 @@
 package com.seal.util.util;
 
+import java.util.Date;
+
 /**
  * @author zhiqiang.feng
  * @version 1.0
@@ -60,6 +62,7 @@ public class WordUpperLow {
 
     /**
      * 小写转大写
+     *
      * @param c
      * @return
      */
@@ -69,6 +72,7 @@ public class WordUpperLow {
 
     /**
      * 大写转小写
+     *
      * @param c
      * @return
      */
@@ -79,6 +83,7 @@ public class WordUpperLow {
 
     /**
      * 是否是大写
+     *
      * @param c
      * @return
      */
@@ -90,6 +95,7 @@ public class WordUpperLow {
 
     /**
      * 是否是小写
+     *
      * @param c
      * @return
      */
