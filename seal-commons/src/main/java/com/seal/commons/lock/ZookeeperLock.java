@@ -14,6 +14,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
+ * Zookeeper分布式锁
  * @author fengzhiqiang
  * @date-time 2020/4/23 17:16
  **/
@@ -21,18 +22,30 @@ public class ZookeeperLock implements Lock {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private ZooKeeper zooKeeper;
-    //锁根节点
+    /**
+     * 锁根节点
+     */
     private final String lockNamespace;
-    //锁值节点
+    /**
+     * 锁值节点
+     */
     private final String lockKey;
-    //当前节点
+    /**
+     * 当前节点
+     */
     private String currentNode;
-    //等待的前一个节点
+    /**
+     * 等待的前一个节点
+     */
     private String waitNode;
-    //竞争的节点列表
+    /**
+     * 竞争的节点列表
+     */
     private List<String> lockNodes;
 
-    //计数器
+    /**
+     * 计数器
+     */
     private volatile CountDownLatch countDownLatch;
 
     /**

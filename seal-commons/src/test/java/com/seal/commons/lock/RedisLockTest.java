@@ -37,6 +37,11 @@ public class RedisLockTest {
     private int l = 0;
 
 
+    /**
+     * countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。
+     * 是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，计数器的值就-1，
+     * 当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了。
+     */
     private CountDownLatch countDownLatch = new CountDownLatch(threads);
 
     private CyclicBarrier cyclicBarrier = new CyclicBarrier(threads);
@@ -44,7 +49,7 @@ public class RedisLockTest {
     @Before
     public void before() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("127.0.0.1");
+        redisStandaloneConfiguration.setHostName("47.107.152.93");
         redisStandaloneConfiguration.setPort(6379);
 
         //使用RedisLock测试了100、200、300、400、500的线程并发，在RedisTemplate使用Jedis会比使用原生Jedis慢很多，使用Lettuce相对而言就要快很多，但依旧比原生的Jedis要慢一些
