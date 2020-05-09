@@ -25,10 +25,10 @@ public class DateUtils8 {
 
     public static void main(String[] args) {
         //test1();
-        // test2();
-        System.out.println(transDateToLocalDate(new Date()));
-        Calendar calendar = Calendar.getInstance();
-        System.out.println(calendar.getTime());
+        test2();
+        //System.out.println(transDateToLocalDate(new Date()));
+//        Calendar calendar = Calendar.getInstance();
+//        System.out.println(calendar.getTime());
     }
 
 
@@ -119,6 +119,10 @@ public class DateUtils8 {
         // 格式化输出
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         System.out.println(time.format(formatter2));
+
+        // 格式化输出
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("HH:mm");
+        System.out.println(time.format(formatter3));
 
         // 构造时间
         LocalDateTime startTime = LocalDateTime.of(2018, 1, 1, 20, 31, 20);
