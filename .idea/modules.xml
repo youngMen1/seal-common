@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/seal-common.iml" filepath="$PROJECT_DIR$/seal-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-commons/seal-commons.iml" filepath="$PROJECT_DIR$/seal-commons/seal-commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-features/seal-features.iml" filepath="$PROJECT_DIR$/seal-features/seal-features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-googleguava/seal-googleguava.iml" filepath="$PROJECT_DIR$/seal-googleguava/seal-googleguava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-hutool/seal-hutool.iml" filepath="$PROJECT_DIR$/seal-hutool/seal-hutool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-jackson/seal-jackson.iml" filepath="$PROJECT_DIR$/seal-jackson/seal-jackson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-json/seal-json.iml" filepath="$PROJECT_DIR$/seal-json/seal-json.iml" />
+      <module fileurl="file://$PROJECT_DIR$/seal-util/seal-util.iml" filepath="$PROJECT_DIR$/seal-util/seal-util.iml" />
+    </modules>
+  </component>
+</project>
