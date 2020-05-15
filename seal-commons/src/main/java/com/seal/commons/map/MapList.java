@@ -1,7 +1,6 @@
 package com.seal.commons.map;
 
 import java.time.DayOfWeek;
-import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.TreeMap;
