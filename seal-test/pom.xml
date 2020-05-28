@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.seal.test</groupId>
     <artifactId>seal-test</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${parent.version}</version>
     <name>seal-test</name>
     <description>测试</description>
 
