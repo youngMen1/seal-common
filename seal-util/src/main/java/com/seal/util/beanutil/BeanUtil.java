@@ -98,7 +98,7 @@ public class BeanUtil {
         try {
             BeanUtils.copyProperties(source, target);
         } catch (Exception e) {
-            log.error("BeanUtil property copy failed:Exception", e);
+            log.error("BeanUtil property copy failed:exception", e);
         }
     }
 
