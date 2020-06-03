@@ -1,3 +1,5 @@
+# 各种工具学习
+
 ## 模块说明
 seal-commons: Apache Commons 工具包
 seal-features: jdk8新特性
@@ -6,14 +8,18 @@ seal-hutool: hutool工具包
 seal-jackson: jackson
 seal-json: json工具包
 seal-util: util工具类总结,BeanUtils提供对Java反射和自省API的包装
-## jdk8新特性学习
+seal-test: 各种业务场景学习
 
-## google-Guava
+## 1.jdk8新特性学习
+
+## 2.google-Guava
+```
 http://ifeve.com/google-guava-using-and-avoiding-null/
+```
 
-## jdk8
+## 3.jdk8
 
-## jackson
+## 4.jackson
 Jackson是一个简单基于Java应用库，Jackson可以轻松的将Java对象转换成json对象和xml文档，同样也可以将json、xml转换成Java对象。Jackson所依赖的jar包较少，简单易用并且性能也要相对高些，并且Jackson社区相对比较活跃，更新速度也比较快。
 ### 特点
 * 容易使用 - jackson API提供了一个高层次外观，以简化常用的用例。
@@ -32,7 +38,7 @@ Jackson是一个简单基于Java应用库，Jackson可以轻松的将Java对象�
 * ObjectMapper读/写JSON两种类型的数据绑定。数据绑定是最方便的方式是类似XML的JAXB解析器。
 
 
-## fastJson
+## 5.fastJson
 Fastjson是一个Java语言编写的高性能功能完善的JSON库。它采用一种“假定有序快速匹配”的算法，
 把JSON Parse的性能提升到极致，是目前Java语言中最快的JSON库。Fastjson接口简单易用，
 已经被广泛使用在缓存序列化、协议交互、Web输出、Android客户端等多种应用场景。
@@ -83,7 +89,7 @@ FastJson中的注解@JSONField，一般作用在get/set方法上面，常用的�
 　　}
 ```
 
-## Hutool
+## 6.Hutool
 一个Java基础工具类，对文件、流、加密解密、转码、正则、线程、XML等JDK方法进行封装，组成各种Util工具类，同时提供以下组件：
 * 布隆过滤
 * 缓存
