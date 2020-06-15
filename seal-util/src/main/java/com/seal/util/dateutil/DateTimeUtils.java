@@ -10,13 +10,10 @@ import java.util.Date;
 
 
 /**
+ * 日期格式化辅助类(线程安全)
  * @author zhiqiang.feng
- * @version 1.0c
  * @date-time 2019/3/15 16:00
- * @description 日期格式化辅助类(线程安全)
- *
  * SimpleDateFormat不是线程安全所以每次都去new
- *
  * 说明：日期格式中的这两对字母表意如下：
  *  1、表示月份是大写的 M；
  *  2、表示分钟则是小写的 m；
