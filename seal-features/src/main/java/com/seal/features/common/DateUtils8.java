@@ -5,21 +5,19 @@ import org.junit.Test;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Java8中处理时间和日期的类
+ *
+ * Instant：瞬时实例。
+ * LocalDate：本地日期，不包含具体时间 例如：2014-01-14 可以用来记录生日、纪念日、加盟日等。
+ * LocalTime：本地时间，不包含日期。
+ * LocalDateTime：组合了日期和时间，但不包含时差和时区信息。
+ * ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威治的时差。
+ *
  * @author zhiqiang.feng
- * @version 1.0
  * @date-time 2020/1/16 17:04
- * @description Java8中处理时间和日期的类
- * LocalDateTime是带时分秒的
- * JDK8中，新增了三个类，用以处理时间。
- * LocalDate专门处理日期，LocalTime专门处理时间，
- * LocalDateTime包含了日期和时间，
- * 而且对于很多复杂的问题，
- * 都提供了现成的方法，
- * 比如：获取2017年12月的第一个周一等。
  **/
 public class DateUtils8 {
 
@@ -27,14 +25,11 @@ public class DateUtils8 {
         // 处理日期 LocalDate
         localDateTest();
         // 处理日期 LocalTime
-        //localTimeTest();
+        localTimeTest();
         // 处理日期 LocalDateTime
-        //localDateTimeTest();
-        //System.out.println(transDateToLocalDate(new Date()));
-//        Calendar calendar = Calendar.getInstance();
-//        System.out.println(calendar.getTime());
+        localDateTimeTest();
+        System.out.println(transDateToLocalDate(new Date()));
     }
-
 
     /**
      * 处理日期 LocalDate
