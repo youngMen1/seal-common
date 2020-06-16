@@ -24,8 +24,12 @@ import java.util.Date;
 public class DateUtils8 {
 
     public static void main(String[] args) {
-        //test1();
-        test2();
+        // 处理日期 LocalDate
+        localDateTest();
+        // 处理日期 LocalTime
+        //localTimeTest();
+        // 处理日期 LocalDateTime
+        //localDateTimeTest();
         //System.out.println(transDateToLocalDate(new Date()));
 //        Calendar calendar = Calendar.getInstance();
 //        System.out.println(calendar.getTime());
@@ -35,41 +39,42 @@ public class DateUtils8 {
     /**
      * 处理日期 LocalDate
      */
-    public static void test1() {
-        //获取当前日期   2017-11-06
+    @Test
+    public static void localDateTest() {
+        // 获取当前日期   2020-06-16
         LocalDate today = LocalDate.now();
         System.out.println(today);
 
-        //构造日期   2017-10-08
-        LocalDate today2 = LocalDate.of(2017, 10, 8);
+        // 构造日期   2020-06-16
+        LocalDate today2 = LocalDate.of(2020, 6, 16);
         System.out.println(today2);
 
-        //构造日期   2017-02-22    字符串严格按照yyyy-MM-dd
-        LocalDate today3 = LocalDate.parse("2017-02-22");
+        // 构造日期   2017-02-22    字符串严格按照yyyy-MM-dd
+        LocalDate today3 = LocalDate.parse("2020-06-16");
         System.out.println(today3);
 
-        //本月第一天  2017-11-01
+        // 本月第一天  2020-06-01
         LocalDate firstDayOfMonth = today.with(TemporalAdjusters.firstDayOfMonth());
         System.out.println(firstDayOfMonth);
 
-        //本月第二天  2017-11-02   第n天
+        // 本月第二天  2020-06-02   第n天
         LocalDate secondDayOfMonth = today.withDayOfMonth(2);
         System.out.println(secondDayOfMonth);
 
-        //本月最后一天 2017-02-28  方便解决任何年份的二月份多少天
+        // 本月最后一天 2020-06-30  方便解决任何年份的二月份多少天
         LocalDate lastDayOfMonth = today3.with(TemporalAdjusters.lastDayOfMonth());
         System.out.println(lastDayOfMonth);
 
-        //获取2017年12月的第一个周一   2017-12-04
-        LocalDate firstDayOf201712 = LocalDate.parse("2017-12-01").with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
+        // 获取2020年12月的第一个周一   2020-12-07
+        LocalDate firstDayOf201712 = LocalDate.parse("2020-12-01").with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
         System.out.println(firstDayOf201712);
-
     }
 
     /**
      * 处理时间  LocalTime
      */
-    public static void test2() {
+    @Test
+    public static void localTimeTest() {
         //获取当前时间  含有毫秒值  17:18:41.571
         LocalTime now = LocalTime.now();
         System.out.println(now);
@@ -93,8 +98,11 @@ public class DateUtils8 {
         System.out.println(lt);
     }
 
+    /**
+     * 处理时间  LocalDateTime
+     */
     @Test
-    public void testTime() {
+    public static void localDateTimeTest() {
         LocalDateTime time = LocalDateTime.now();
         // 字符串表示
         System.out.println(time.toString());
