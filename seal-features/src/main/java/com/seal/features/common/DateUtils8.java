@@ -23,9 +23,9 @@ public class DateUtils8 {
 
     public static void main(String[] args) {
         // 处理日期 LocalDate
-        localDateTest();
+        // localDateTest();
         // 处理日期 LocalTime
-        localTimeTest();
+        // localTimeTest();
         // 处理日期 LocalDateTime
         localDateTimeTest();
         System.out.println(transDateToLocalDate(new Date()));

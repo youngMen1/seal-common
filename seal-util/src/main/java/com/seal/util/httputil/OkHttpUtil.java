@@ -16,6 +16,7 @@ import java.util.Map;
  * @description
  **/
 public class OkHttpUtil {
+
     private static final Logger log = LoggerFactory.getLogger(OkHttpUtil.class);
 
     public OkHttpUtil() {
