@@ -1,4 +1,4 @@
-## BeanUtils提供对Java反射和自省API的包装
+## 1.BeanUtils提供对Java反射和自省API的包装
 【开宗明义】
 1.无论是org.springframework.beans或者org.apache.commons.beanutils，与get/set方式相比，都存在性能问题。
 2.效率由高到底：get/set 》PropertyUtils 》BeanUtils。
@@ -16,3 +16,7 @@ java.util.Date.class);但是PropertyUtils没有。
 另外：值得注意的是，在测试过程中发现，commons-beanutils-1.8.0.jar版本中的BeanUtils类，
 支持Byte到Integer或int的转化。说明实际使用过程中，我们还是要多看源码，多做测试，
 并且注意版本号升级带来的微小变化。
+
+## 2.基于EasyPOI便捷高效地实现Excel导出操作
+基于EasyPOI便捷高效地实现Excel导出操作:https://zhuanlan.zhihu.com/p/45654141
+

@@ -1,5 +1,6 @@
 package com.seal.util.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +19,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Person {
+    @Excel(name = "姓名", needMerge = true, width = 20)
     private String name;
+    @Excel(name = "年龄", needMerge = true, width = 20)
     private String age;
-    @JsonFormat(pattern = "yyyy-MM-DD")
+    @Excel(name = "出生日期", needMerge = true, width = 20)
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
 }
