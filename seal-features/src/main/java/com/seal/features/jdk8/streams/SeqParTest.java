@@ -20,6 +20,7 @@ public class SeqParTest {
         for (int c = 1; c <= COUNT; c++) {
             list.add(c);
         }
+        // 随机打乱原来的顺序
         Collections.shuffle(list);
     }
 
