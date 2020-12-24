@@ -34,3 +34,16 @@ CyclicBarrier 是一组线程之间互相等待，更像是几个驴友之间不
 目前业界线程池的设计，普遍采用的都是生产者 - 消费者模式。
 线程池的使用方是生产者，线程池本身是消费者。
 
+## Future：如何用多线程实现最优的“烧水泡茶”程序？
+1.我们仅仅介绍了 ThreadPoolExecutor 的 void execute(Runnable command) 方法，
+利用这个方法虽然可以提交任务，但是却没有办法获取任务的执行结果（execute() 方法没有返回值）。
+而很多场景下，我们又都是需要获取任务的执行结果的。
+那 ThreadPoolExecutor 是否提供了相关功能呢？必须的，这么重要的功能当然需要提供了。
+
+2.Java 通过 ThreadPoolExecutor 提供的 3 个 submit() 方法和 1 个 FutureTask 工具类来支持获得任务执行结果的需求。
+
+## CompletableFuture
+Java 在 1.8 版本提供了 CompletableFuture 来支持异步编程，CompletableFuture 有可能是你见过的最复杂的工具类了，不过功能也着实让人感到震撼。
+
+## CompletionService
+
