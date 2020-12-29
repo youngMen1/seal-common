@@ -46,4 +46,26 @@ CyclicBarrier 是一组线程之间互相等待，更像是几个驴友之间不
 Java 在 1.8 版本提供了 CompletableFuture 来支持异步编程，CompletableFuture 有可能是你见过的最复杂的工具类了，不过功能也着实让人感到震撼。
 
 ## CompletionService
+解决批量执行异步任务
+
+对于简单的并行任务，你可以通过“线程池 + Future”的方案来解决；
+如果任务之间有聚合关系，无论是 AND 聚合还是 OR 聚合，都可以通过 CompletableFuture 来解决；
+而批量的并行任务，则可以通过 CompletionService来解决。
+
+## Fork/Join
+Java 并发包里提供了一种叫做 Fork/Join 的并行计算框架，就是用来支持分治这种任务模型的。分治任务模型
+
+Fork 对应的是分治任务模型里的任务分解，Join 对应的是结果合并。
+
+Fork/Join 计算框架主要包含两部分，一部分是分治任务的线程池 ForkJoinPool，另一部分是分治任务 ForkJoinTask。
+
+### 分治任务模型
+分治任务模型可分为两个阶段：一个阶段是任务分解，也就是将任务迭代地分解为子任务，直至子任务可以直接计算出结果；
+另一个阶段是结果合并，即逐层合并子任务的执行结果，直至获得最终结果。
+
+
+
+
+
+
 
