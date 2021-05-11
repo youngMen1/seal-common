@@ -61,8 +61,13 @@ public class DateUtil {
      */
     public static void getCurrentDate() {
 
-        LocalDate today = LocalDate.now();
-        System.out.println("jdk8获取今天的日期:" + today);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println("jdk8获取今天的日期(localDateTime):" + localDateTime);
+
+        LocalDate localDate = LocalDate.now();
+        System.out.println("jdk8获取今天的日期(localDate):" + localDate);
+
+        System.out.println("jdk8获取今天的日期(localDateTime):" + LocalDateTime.of(localDate, LocalTime.MAX));
 
         // 这个是作为对比
         Date date = new Date();
