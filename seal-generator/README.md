@@ -25,13 +25,3 @@
 ##推荐使用Mybatis分页插件PageHelper
 
 ###https://github.com/pagehelper/Mybatis-PageHelper
-
-##作者信息
-
-- 作者博客：http://blog.csdn.net/isea533
-
-- 作者邮箱：abel533@gmail.com
-
-- Mybatis工具群： 211286137 (Mybatis相关工具插件等等)
-
-mybatis-generator:generate

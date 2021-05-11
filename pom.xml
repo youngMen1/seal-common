@@ -27,6 +27,7 @@
         <module>seal-json</module>
         <module>seal-util</module>
         <module>seal-test</module>
+        <module>seal-generator</module>
     </modules>
 
     <properties>
