@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class FutureTest {
 
     public static void main(String[] args) {
+
         // Future 接口有 5 个方法 分别是取消任务的方法 cancel()、判断任务是否已取消的方法 isCancelled()、判断任务是否已结束的方法 isDone()以及2 个获得任务执行结果的 get() 和 get(timeout, unit)
 
         // FutureTask 把任务和返回结果结合起来，变成一个可以有返回结果的任务进行提交
