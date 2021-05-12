@@ -1,4 +1,4 @@
-package com.seal.features.jdk8.juc;
+package com.seal.features.juc;
 
 import java.util.ArrayList;
 import java.util.List;

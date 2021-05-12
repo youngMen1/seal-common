@@ -1,4 +1,4 @@
-package com.seal.features.jdk8.juc;
+package com.seal.features.juc;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
