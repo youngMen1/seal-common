@@ -24,11 +24,11 @@ public class ForkJoinDemo {
         for (long aLong : longs) {
             forSum += aLong;
         }
+        System.out.println("11");
+        System.out.println("11");
+        System.out.println("11");
 
         // 对比看计算出来的值是否相同
         System.out.println("ForkJoinSum:" + invoke + ", for:" + forSum + ", check:" + (invoke == forSum));
-        System.out.println("1");
-        System.out.println("1");
-        System.out.println("1");
     }
 }
