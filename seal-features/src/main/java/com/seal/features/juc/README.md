@@ -46,6 +46,7 @@ CyclicBarrier 是一组线程之间互相等待，更像是几个驴友之间不
 Java 在 1.8 版本提供了 CompletableFuture 来支持异步编程，CompletableFuture 有可能是你见过的最复杂的工具类了，不过功能也着实让人感到震撼。
 
 ## CompletionService
+
 解决批量执行异步任务
 
 对于简单的并行任务，你可以通过“线程池 + Future”的方案来解决；
