@@ -28,6 +28,7 @@ public class ForkJoinDemo {
         // 对比看计算出来的值是否相同
         System.out.println("ForkJoinSum:" + invoke + ", for:" + forSum + ", check:" + (invoke == forSum));
 
-
+        System.out.println("11");
+        System.out.println("11");
     }
 }
