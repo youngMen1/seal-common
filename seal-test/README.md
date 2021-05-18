@@ -18,6 +18,48 @@ https://mp.weixin.qq.com/s/NLpf6LjqPhPgveLVfi3cYQ
 ### 2.3.金额数值计算精度的坑
 ### 2.4.FileReader默认编码导致乱码问题
 ### 2.5.Integer缓存的坑
+### 2.6.static静态变量依赖spring实例化变量，可能导致初始化出错
+### 2.7.使用ThreadLocal，线程重用导致信息错乱的坑
+### 2.8.疏忽switch的return和break
+### 2.9.Arrays.asList的几个坑
+#### 2.9.1.基本类型不能作为 Arrays.asList方法的参数，否则会被当做一个参数。
+#### 9.9.2.Arrays.asList 返回的 List 不支持增删操作。
+#### 9.9.3.ArrayList.toArray() 强转的坑
+
+### 3.0.异常使用的几个坑
+1.不要弄丢了你的堆栈异常信息
+错误的打印方式：
+~~~
+public void wrong1(){
+try {
+readFile();
+} catch (IOException e) {
+//没有把异常e取出来，原始异常信息丢失  
+throw new RuntimeException("系统忙请稍后再试");
+}
+}
+
+public void wrong2(){
+try {
+readFile();
+} catch (IOException e) {
+//只保留了异常消息，栈没有记录啦
+log.error("文件读取错误, {}", e.getMessage());
+throw new RuntimeException("系统忙请稍后再试");
+}
+~~~
+
+正确的打印方式：
+~~~
+try {
+readFile();
+} catch (IOException e) {
+//把整个IO异常都记录下来，而不是只打印消息
+log.error("文件读取错误", e);
+throw new RuntimeException("系统忙请稍后再试");
+}
+~~~
+
 
 ### 参考
 1.六类典型空指针问题
