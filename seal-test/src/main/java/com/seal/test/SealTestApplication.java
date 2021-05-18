@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 各种业务场景学习
  *
  * @author fengzhiqiang
- * @date-time 2020/6/3 16:38
+ * @date 2020/6/3 16:38
  **/
 @SpringBootApplication
 public class SealTestApplication {
