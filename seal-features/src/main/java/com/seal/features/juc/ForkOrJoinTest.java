@@ -8,7 +8,9 @@ import java.util.concurrent.RecursiveTask;
 /**
  * Fork/Join
  * Fork 对应的是分治任务模型里的任务分解，Join 对应的是结果合并。
- * Fork/Join 计算框架主要包含两部分，一部分是分治任务的线程池 ForkJoinPool，另一部分是分治任务 ForkJoinTask。
+ * Fork/Join 计算框架主要包含两部分，
+ * 一部分是分治任务的线程池 ForkJoinPool，
+ * 另一部分是分治任务 ForkJoinTask。 ==> RecursiveTask代表有返回值的任务，RecursiveAction代表没有返回值的任务。
  *
  * @author fengzhiqiang
  * @date 2020/12/29 17:14

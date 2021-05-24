@@ -56,18 +56,10 @@ public class DateUtil {
         formateDate();
         // LocalDateTime计算相差天数
         calcLocalDateTimeDays();
+        // 添加天数
+        calcLocalDateTimeDaysPlusDays();
     }
 
-    private static void calcLocalDateTimeDays() {
-        LocalDateTime start = LocalDateTime.now();
-        String end2 = "2021-05-23 11:25:47";
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime end = LocalDateTime.parse(end2,dateTimeFormatter);
-        Duration duration = Duration.between(start,end);
-        // 相差的天数
-        long days = duration.toDays();
-        System.out.println(days);
-    }
 
     /**
      * 获取今天的日期
@@ -286,5 +278,30 @@ public class DateUtil {
         String dayAfterTommorrow = "20180210";
         LocalDate formatted = LocalDate.parse(dayAfterTommorrow, DateTimeFormatter.BASIC_ISO_DATE);
         System.out.printf("从字符串生成的日期 %s is %s %n", dayAfterTommorrow, formatted);
+    }
+
+    private static void calcLocalDateTimeDays() {
+        LocalDateTime start = LocalDateTime.now();
+        String end2 = "2021-05-23 11:25:47";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime end = LocalDateTime.parse(end2, dateTimeFormatter);
+        Duration duration = Duration.between(start, end);
+        // 相差的天数
+        long days = duration.toDays();
+        System.out.println(days);
+    }
+
+    private static void calcLocalDateTimeDaysPlusDays() {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime today = LocalDateTime.of(now.toLocalDate(), LocalTime.MIN);
+        System.out.println("开始时间：" + dateTimeFormatter.format(today));
+
+        LocalDateTime startDay = today.plusDays(2);
+        LocalDateTime endDay = LocalDateTime.of(startDay.plusDays(3).toLocalDate(), LocalTime.of(23, 59, 59));
+
+        System.out.println("开始时间：" + dateTimeFormatter.format(startDay));
+        System.out.println("结束时间时间：" + dateTimeFormatter.format(endDay));
     }
 }

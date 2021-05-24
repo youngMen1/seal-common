@@ -59,6 +59,11 @@ Fork 对应的是分治任务模型里的任务分解，Join 对应的是结果�
 
 Fork/Join 计算框架主要包含两部分，一部分是分治任务的线程池 ForkJoinPool，另一部分是分治任务 ForkJoinTask。
 
+ForkJoinTask代表一个可以并行、合并的任务。ForkJoinTask是一个抽象类，
+它有两个抽象子类：RecursiveAction和RecursiveTask。
+RecursiveTask代表有返回值的任务
+RecursiveAction代表没有返回值的任务。
+
 ### 分治任务模型
 分治任务模型可分为两个阶段：一个阶段是任务分解，也就是将任务迭代地分解为子任务，直至子任务可以直接计算出结果；
 另一个阶段是结果合并，即逐层合并子任务的执行结果，直至获得最终结果。
