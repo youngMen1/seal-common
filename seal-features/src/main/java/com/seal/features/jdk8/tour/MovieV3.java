@@ -37,7 +37,7 @@ public class MovieV3 {
 					return ;
 				}
 
-				Movie movie = new Movie(title, Integer.valueOf(releaseYear)) ;
+				Movie movie = new Movie(title, Integer.parseInt(releaseYear)) ;
 
 				for (int i = 1 ; i < elements.length ; i++) {
 					String [] name = elements[i].split(", ") ;
