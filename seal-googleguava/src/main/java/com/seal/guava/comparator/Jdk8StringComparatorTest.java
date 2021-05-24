@@ -21,7 +21,7 @@ public class Jdk8StringComparatorTest {
                 "Ramesh", "Suresh", "Naresh", "Mahesh", null, "", "Vikas", "Deepak");
         Comparator<String> comparator =
                 Comparator.<String, Integer>comparing((str) -> {
-                    //这是Java8的Optional
+                    // 这是Java8的Optional
                     return Optional.ofNullable(str).orElse("").length();
                 })
                         .thenComparing(Comparator.nullsFirst(Comparator.naturalOrder()));
