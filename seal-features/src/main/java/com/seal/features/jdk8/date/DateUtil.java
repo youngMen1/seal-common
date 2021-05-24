@@ -54,6 +54,19 @@ public class DateUtil {
         getTimestamp();
         // 使用预定义的格式化工具去解析或格式化日期
         formateDate();
+        // LocalDateTime计算相差天数
+        calcLocalDateTimeDays();
+    }
+
+    private static void calcLocalDateTimeDays() {
+        LocalDateTime start = LocalDateTime.now();
+        String end2 = "2021-05-23 11:25:47";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime end = LocalDateTime.parse(end2,dateTimeFormatter);
+        Duration duration = Duration.between(start,end);
+        // 相差的天数
+        long days = duration.toDays();
+        System.out.println(days);
     }
 
     /**
