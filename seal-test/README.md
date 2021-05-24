@@ -60,6 +60,39 @@ throw new RuntimeException("系统忙请稍后再试");
 }
 ~~~
 
+## 15. 先查询，再更新/删除的并发一致性问题
+
+在日常开发中，这种代码实现经常可见：先查询是否有剩余可用的票，再去更新票余量。
+
+`
+if(selectIsAvailable(ticketId){
+1、deleteTicketById(ticketId)
+2、给现金增加操作
+}else{
+return “没有可用现金券”
+}`
+
+如果是**并发执行**，很可能有问题的，应该利用数据库的更新/删除的原子性，正解如下：
+`
+if(deleteAvailableTicketById(ticketId) == 1){
+1、给现金增加操作
+}else{
+return “没有可用现金券”
+}`
+
+## 16. 数据库使用utf-8存储， 插入表情异常的坑
+低版本的MySQL支持的utf8编码，最大字符长度为 3 字节，但是呢，存储表情需要4个字节，
+因此如果用utf8存储表情的话，
+会报SQLException: Incorrect string value: '\xF0\x9F\x98\x84' for column，
+所以一般用utf8mb4编码去存储表情。
+
+## 17. 事务未生效的坑
+日常业务开发中，我们经常跟事务打交道，「事务失效」主要有以下几个场景：
+1.底层数据库引擎不支持事务
+2.在非public修饰的方法使用
+3.rollbackFor属性设置错误
+4.本类方法直接调用
+5.异常被try...catch吃了，导致事务失效。
 
 ### 参考
 1.六类典型空指针问题
