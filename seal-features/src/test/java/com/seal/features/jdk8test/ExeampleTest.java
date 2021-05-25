@@ -1,10 +1,9 @@
 package com.seal.features.jdk8test;
 
-import com.seal.features.entity.Person;
+import com.seal.features.entity.Person2;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -22,11 +21,11 @@ public class ExeampleTest {
     private final List<String> friends = Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
     private final List<String> editors = Arrays.asList("Brian", "Jackie", "John", "Mike");
     private final List<String> comrades = Arrays.asList("Kate", "Ken", "Nick", "Paula", "Zach");
-    private final List<Person> people = Arrays.asList(
-            new Person("John", "20"),
-            new Person("Sara", "21"),
-            new Person("Jane", "21"),
-            new Person("Greg", "35")
+    private final List<Person2> people = Arrays.asList(
+            new Person2("John", "20"),
+            new Person2("Sara", "21"),
+            new Person2("Jane", "21"),
+            new Person2("Greg", "35")
     );
 
     /**
