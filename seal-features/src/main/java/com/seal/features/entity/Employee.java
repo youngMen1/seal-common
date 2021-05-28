@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 /**
  * @author fengzhiqiang
  * @date 2021/5/25 13:34
@@ -17,4 +15,6 @@ public class Employee {
     private int id;
     private String name;
     private int salary;
+
+
 }

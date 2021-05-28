@@ -11,9 +11,9 @@ import com.seal.test.entity.User;
 public class ReflectionTest {
 
     public static void main(String[] args) {
-        User demo = new User();
+        //User demo = new User();
         // 1.通过一个对象获得完整的包名和类名,添加一句:所有类的对象其实都是Class的实例。
-        System.out.println(demo.getClass().getName());
+       // System.out.println(demo.getClass().getName());
 
         // 2、实例化Class类对象
 
