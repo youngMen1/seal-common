@@ -1,15 +1,35 @@
 package com.seal.features.jdk8.lambda;
 
+import com.seal.features.entity.Person;
 import junit.framework.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class LambdaTest {
+
+    /**
+     * JDK8 集合按某字段排序
+     */
+    @Test
+    public void sortTest() {
+        List<Person> list = new ArrayList();
+        // 升序
+        list.sort(Comparator.comparing(Person::getAge));
+        // 降序
+        list.sort(Comparator.comparing(Person::getAge).reversed());
+        // 多字段升序
+        list.sort(Comparator.comparing(Person::getAge).thenComparing(Person::getHeight));
+        // 字段1降序，字段2升序
+        list.sort(Comparator.comparing(Person::getAge).reversed().thenComparing(Person::getHeight));
+
+    }
 
     @Test
     public void testCmpLegacy() {
@@ -23,25 +43,25 @@ public class LambdaTest {
 
         Assert.assertEquals(0, cmp.compare(0, 0));
         Assert.assertEquals(-1, cmp.compare(-100, 100));
-        Assert.assertEquals(1,  cmp.compare(100, -100));
+        Assert.assertEquals(1, cmp.compare(100, -100));
     }
 
     @Test
     public void testCmpLambda0() {
         Comparator<Integer> cmp = (x, y) -> (x < y) ? -1 : ((x > y) ? 1 : 0);
 
-        Assert.assertEquals(0,  cmp.compare(0, 0));
+        Assert.assertEquals(0, cmp.compare(0, 0));
         Assert.assertEquals(-1, cmp.compare(-100, 100));
-        Assert.assertEquals(1,  cmp.compare(100, -100));
+        Assert.assertEquals(1, cmp.compare(100, -100));
     }
 
     @Test
     public void testCmpLambda1() {
         Comparator<Integer> cmp = (Integer x, Integer y) -> (x < y) ? -1 : ((x > y) ? 1 : 0);
 
-        Assert.assertEquals(0,  cmp.compare(0, 0));
+        Assert.assertEquals(0, cmp.compare(0, 0));
         Assert.assertEquals(-1, cmp.compare(-100, 100));
-        Assert.assertEquals(1,  cmp.compare(100, -100));
+        Assert.assertEquals(1, cmp.compare(100, -100));
     }
 
     @Test
@@ -77,9 +97,9 @@ public class LambdaTest {
     public void testCmpLambda2() { // wrong
         Comparator<Integer> cmp = (x, y) -> (x < y) ? -1 : ((x == y) ? 0 : 1);
 
-        Assert.assertEquals(0,  cmp.compare(100, 100));
+        Assert.assertEquals(0, cmp.compare(100, 100));
         Assert.assertEquals(-1, cmp.compare(0, 100));
-        Assert.assertEquals(1,  cmp.compare(100, -100));
+        Assert.assertEquals(1, cmp.compare(100, -100));
     }
 
     @Test
@@ -90,15 +110,17 @@ public class LambdaTest {
             return (x < y) ? -1 : ((x == y) ? 0 : 1);
         };
 
-        Assert.assertEquals(0,  cmp.compare(1000, 1000));
+        Assert.assertEquals(0, cmp.compare(1000, 1000));
         Assert.assertEquals(-1, cmp.compare(0, 100));
-        Assert.assertEquals(1,  cmp.compare(100, -100));
+        Assert.assertEquals(1, cmp.compare(100, -100));
     }
 
     @Test
     public void testBlock0() {
         // Consumer<T>  ~  void accept(T t);
-        Consumer<String> b = s -> { System.out.println(s);};
+        Consumer<String> b = s -> {
+            System.out.println(s);
+        };
         Arrays.asList("Foo", "Bar", "Baz", "Baz", "Foo", "Bar").forEach(b);
     }
 
