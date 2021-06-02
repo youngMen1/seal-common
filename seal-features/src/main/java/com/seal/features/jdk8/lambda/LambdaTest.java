@@ -1,5 +1,7 @@
 package com.seal.features.jdk8.lambda;
 
+import com.seal.features.entity.City;
+
 import com.seal.features.entity.Person;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -20,6 +22,12 @@ public class LambdaTest {
     @Test
     public void sortTest() {
         List<Person> list = new ArrayList();
+        Person person = new Person();
+        person.setName("张三");
+        person.setAge("18");
+        person.setCity(new City("深圳"));
+        person.setHeight(175);
+        list.add(person);
         // 升序
         list.sort(Comparator.comparing(Person::getAge));
         // 降序
