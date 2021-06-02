@@ -28,14 +28,24 @@ public class LambdaTest {
         person.setCity(new City("深圳"));
         person.setHeight(175);
         list.add(person);
+        Person person2 = new Person();
+        person2.setName("张三");
+        person2.setAge("19");
+        person2.setCity(new City("深圳"));
+        person2.setHeight(180);
+        list.add(person2);
         // 升序
         list.sort(Comparator.comparing(Person::getAge));
+        System.out.println("升序:" + list);
         // 降序
         list.sort(Comparator.comparing(Person::getAge).reversed());
+        System.out.println("降序:" + list);
         // 多字段升序
         list.sort(Comparator.comparing(Person::getAge).thenComparing(Person::getHeight));
+        System.out.println("多字段升序:" + list);
         // 字段1降序，字段2升序
         list.sort(Comparator.comparing(Person::getAge).reversed().thenComparing(Person::getHeight));
+        System.out.println("字段1降序，字段2升序:" + list);
 
     }
 
