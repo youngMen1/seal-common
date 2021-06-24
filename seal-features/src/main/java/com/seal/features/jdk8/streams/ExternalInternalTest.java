@@ -36,4 +36,7 @@ public class ExternalInternalTest {
         );
     }
 
+    @Test
+    public void testInternal2() {}
+
 }
