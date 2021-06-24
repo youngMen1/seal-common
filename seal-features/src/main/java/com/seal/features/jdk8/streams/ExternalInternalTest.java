@@ -39,4 +39,7 @@ public class ExternalInternalTest {
     @Test
     public void testInternal2() {}
 
+    @Test
+    public void testInternal3() {}
+
 }
