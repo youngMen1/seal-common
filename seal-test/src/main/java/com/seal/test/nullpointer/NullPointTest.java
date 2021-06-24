@@ -672,4 +672,13 @@ public class NullPointTest {
     }
 
 
+    private static void jSONTest2() {
+        Map<String, Object> data = new HashMap<>(2);
+        data.put("id", "11");
+        data.put("name", "捡田螺的小男孩");
+
+
+    }
+
+
 }
