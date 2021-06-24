@@ -677,7 +677,7 @@ public class NullPointTest {
         data.put("id", "11");
         data.put("name", "捡田螺的小男孩");
 
-
+        Map<String, Object> data2 = new HashMap<>(2);
     }
 
 
