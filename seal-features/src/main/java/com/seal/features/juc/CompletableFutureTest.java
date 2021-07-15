@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 异步编程
@@ -46,7 +48,15 @@ public class CompletableFutureTest {
         // completableFutureExample2();
 
         // thenApplyAsync()方法例子
-        completableFutureExample3();
+        // completableFutureExample3();
+
+        // allOf 多种结合的调用
+        completableFutureExample4();
+
+        // anyOf 的含义是只要有任意一个CompletableFuture结束，
+        // 就可以做 接下来的事情，而无须像AllOf那样，
+        // 等待所有的CompletableFuture结束。
+        // completableFutureExample5();
     }
 
 
@@ -184,4 +194,62 @@ public class CompletableFutureTest {
         List<Student> result = future.join();
         System.out.println(result.toString());
     }
+
+    /**
+     * allOf是「与」
+     * allOf 多种结合的调用
+     * allOf 的返回值是 CompletableFuture<Void>类型，
+     * 这是因为 每个传入的 CompletableFuture 的返回值都可能不同，
+     * 所以组合的结果是 无法用某种类型来表示的，索性返回 Void 类型。
+     * CompletableFuture.allOf实现异步执行同步(阻塞)收集结果
+     */
+    private static void completableFutureExample4() {
+        CompletableFuture<String> future1
+                = CompletableFuture.supplyAsync(() -> "biandan");
+        CompletableFuture<String> future2
+                = CompletableFuture.supplyAsync(() -> "说");
+        CompletableFuture<String> future3
+                = CompletableFuture.supplyAsync(() -> "让天下没有难写的代码");
+
+        // 不需要返回值推荐用allOf（一般使用allof方法的时候,都是消费Action,一般不会对结果进行处理,如果对结果进行处理,那肯定会发生错误...）
+        // 返回的是 void 类型 注意 CompletableFuture.allOf 的返回类型是CompletableFuture。
+        // 这种方法的局限性在于它不能返回所有 Supplier 的组合结果。
+        // 我们必须从未来手动获取结果。使用 CompletableFuture.join() 方法获取。
+        // 等待所有future执行完成，收集结果返回。allOf里面的所有线程为执行完毕，主线程会阻塞，直到allOf里面的所有线程都执行，线程就会被唤醒。
+        CompletableFuture<Void> completableFuture1 = CompletableFuture.allOf(future1, future2, future3);
+        completableFuture1.join();
+        /**@see https://www.thinbug.com/q/53391071**/
+        if (completableFuture1.isDone()) {
+            System.out.println("Future result " + future1.join() + " | " + future2.join() + " | " + future3.join());
+        } else {
+            System.out.println("Futures are not ready");
+        }
+
+        // 使用 join 方法手动获取结果
+        List<String> completableFuture2 = Stream.of(future1, future2, future3)
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList());
+
+        System.out.println(completableFuture2.toString());
+
+    }
+
+
+    /**
+     * anyOf是「或」
+     * anyOf 的含义是只要有任意一个 CompletableFuture 结束，
+     * 就可以做 接下来的事情，而无须像 AllOf 那样，等待所有的 CompletableFuture 结束。
+     */
+    private static void completableFutureExample5() {
+        CompletableFuture<String> future1
+                = CompletableFuture.supplyAsync(() -> "biandan");
+        CompletableFuture<String> future2
+                = CompletableFuture.supplyAsync(() -> "说");
+        CompletableFuture<String> future3
+                = CompletableFuture.supplyAsync(() -> "让天下没有难写的代码");
+        CompletableFuture<Object> completableFuture1 = CompletableFuture.anyOf(future1, future2, future3);
+        System.out.println(completableFuture1.join());
+    }
+
+
 }
