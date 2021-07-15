@@ -283,6 +283,11 @@ public class CompletableFutureTest {
                     System.out.println("不需要上个方法的结果,做自己的事情");
                 });
         future.join();
+
+        // CompletableFuture cf1 = CompletableFuture.runAsync(action, executor);
+        // CompletableFuture cf2 = CompletableFuture.runAsync(action, executor);
+        // CompletableFuture cf3 = CompletableFuture.runAsync(action, executor);
+        // CompletableFuture.allOf(cf1, cf2, cf3).thenRun(action)
     }
 
 
