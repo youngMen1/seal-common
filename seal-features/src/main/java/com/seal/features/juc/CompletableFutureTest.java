@@ -6,6 +6,7 @@ import com.seal.features.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -51,12 +52,19 @@ public class CompletableFutureTest {
         // completableFutureExample3();
 
         // allOf 多种结合的调用
-        completableFutureExample4();
+        // completableFutureExample4();
 
         // anyOf 的含义是只要有任意一个CompletableFuture结束，
         // 就可以做 接下来的事情，而无须像AllOf那样，
         // 等待所有的CompletableFuture结束。
         // completableFutureExample5();
+
+        // thenAccept();方法
+        completableFutureExample6();
+
+        // thenRun();方法
+        completableFutureExample7();
+
     }
 
 
@@ -120,6 +128,7 @@ public class CompletableFutureTest {
 
     /**
      * thenApply()例子
+     * 当一个线程依赖另一个线程时，可以使用 thenApply() 方法来把这两个线程串行化。
      */
     private static void completableFutureExample() {
         CompletableFuture<Person> future1 = CompletableFuture.supplyAsync(() -> {
@@ -249,6 +258,31 @@ public class CompletableFutureTest {
                 = CompletableFuture.supplyAsync(() -> "让天下没有难写的代码");
         CompletableFuture<Object> completableFuture1 = CompletableFuture.anyOf(future1, future2, future3);
         System.out.println(completableFuture1.join());
+    }
+
+    /**
+     * thenAccept 消费处理结果
+     * 接收任务的处理结果，并消费处理，无返回结果。
+     * 从示例代码中可以看出，该方法只是消费执行完成的任务，并可以根据上面的任务返回的结果进行处理。并没有后续的输错操作。
+     */
+    private static void completableFutureExample6() {
+        CompletableFuture<Void> future = CompletableFuture
+                .supplyAsync(() -> new Random().nextInt(10))
+                .thenAccept(System.out::println);
+        future.join();
+    }
+
+    /**
+     * 跟 thenAccept 方法不一样的是，不关心任务的处理结果。只要上面的任务执行完成，就开始执行 thenAccept 。
+     * 该方法同 thenAccept 方法类似。不同的是上个任务处理完成后，并不会把计算的结果传给 thenRun 方法。只是处理玩任务后，执行 thenAccept 的后续操作。
+     */
+    private static void completableFutureExample7() {
+        CompletableFuture<Void> future = CompletableFuture
+                .supplyAsync(() -> new Random().nextInt(10))
+                .thenRun(() -> {
+                    System.out.println("不需要上个方法的结果,做自己的事情");
+                });
+        future.join();
     }
 
 
