@@ -20,7 +20,7 @@
     <properties>
         <java.version>1.8</java.version>
         <jackson-core.version>2.9.9</jackson-core.version>
-        <jackson-databind.version>2.9.9.2</jackson-databind.version>
+        <jackson-databind.version>2.9.10.7</jackson-databind.version>
         <jackson-annotations.version>2.9.9</jackson-annotations.version>
         <jackson-dataformat-xml.version>2.9.9</jackson-dataformat-xml.version>
         <jackson-datatype-jdk8.version>2.9.9</jackson-datatype-jdk8.version>
