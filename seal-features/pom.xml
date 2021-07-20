@@ -22,7 +22,7 @@
         <java.version>1.8</java.version>
         <!--测试框架-->
         <jmockit-version>1.38</jmockit-version>
-        <junit-version>4.8.1</junit-version>
+        <junit-version>4.13.1</junit-version>
         <guava-version>13.0</guava-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
