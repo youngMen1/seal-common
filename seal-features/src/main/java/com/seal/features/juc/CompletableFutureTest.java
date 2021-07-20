@@ -4,11 +4,15 @@ import com.seal.features.entity.City;
 import com.seal.features.entity.Person;
 import com.seal.features.entity.Student;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -60,11 +64,19 @@ public class CompletableFutureTest {
         // completableFutureExample5();
 
         // thenAccept();方法
-        completableFutureExample6();
+        // completableFutureExample6();
 
         // thenRun();方法
-        completableFutureExample7();
-
+        // completableFutureExample7();
+        try {
+            completableFutureExample8();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -288,6 +300,52 @@ public class CompletableFutureTest {
         // CompletableFuture cf2 = CompletableFuture.runAsync(action, executor);
         // CompletableFuture cf3 = CompletableFuture.runAsync(action, executor);
         // CompletableFuture.allOf(cf1, cf2, cf3).thenRun(action)
+    }
+
+    private static void completableFutureExample8() throws InterruptedException, ExecutionException, TimeoutException {
+
+        System.out.println("开始" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(5000);
+                return "fengzhiqnag";
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "fengzhiqnag";
+        });
+
+        System.out.println("结果1:" + future1 + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+
+        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(5000);
+                return "fengzhiqnag";
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "fengzhiqnag";
+        });
+        System.out.println("结果2:" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        CompletableFuture<String> future3 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(5000);
+                return "fengzhiqnag";
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return "fengzhiqnag";
+        });
+
+        System.out.println("结果3:" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        System.out.println(future1.join() + future2.join() + future3.join());
+
+        System.out.println("结果4:" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
     }
 
 
