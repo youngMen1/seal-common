@@ -4,7 +4,7 @@ import com.seal.test.secure.secureutils.*;
 import org.junit.Test;
 
 /**
- * 加解密工具类，实现了常用的加解密类。包括单向加密：MD5、SHA；对称加密：DES、AES；非对称加密：RSA
+ * 加解密工具类，实现了常用的加解密类。包括单向加密：MD5、SHA；对称加密：DES、AES；非对称加密(不可逆)：RSA
  *
  * @author fengzhiqiang
  * @date 2021/7/20 16:02

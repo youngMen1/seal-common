@@ -2,6 +2,7 @@ package com.seal.test.secure.secureutils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 编解码基类
@@ -30,7 +31,7 @@ public abstract class BasicCodec {
         base64Utils = Base64Utils.getInstance();
     }
 
-    public static final Charset charset = Charset.forName("UTF-8");
+    public static final Charset charset = StandardCharsets.UTF_8;
 
     /**
      * 加密
@@ -82,7 +83,7 @@ public abstract class BasicCodec {
             return null;
         }
 
-        StringBuffer hex = new StringBuffer();
+        StringBuilder hex = new StringBuilder();
         for (int i = 0; i < data.length; i++) {
             int h = data[i] & 0XFF;
             if (h < 16) {
